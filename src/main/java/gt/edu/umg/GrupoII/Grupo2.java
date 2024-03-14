@@ -3,7 +3,7 @@
  */
 package gt.edu.umg.GrupoII;
 
-import Ventanas.ventanaMenu;
+import gt.edu.umg.Ventanas.ventanaMenu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
