@@ -4,6 +4,7 @@
  */
 package gt.edu.umg.Ventanas;
 
+import static gt.edu.umg.GrupoII.LectorArchivo.File_Reader;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -43,7 +44,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         Background = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         menu = new javax.swing.JPanel();
-        buton1 = new javax.swing.JPanel();
+        buttonArbolesB = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         Ico1 = new javax.swing.JLabel();
         buton2 = new javax.swing.JPanel();
@@ -81,16 +82,16 @@ public class ventanaMenu extends javax.swing.JFrame {
 
         menu.setBackground(new java.awt.Color(250, 252, 253));
 
-        buton1.setBackground(new java.awt.Color(250, 252, 253));
-        buton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonArbolesB.setBackground(new java.awt.Color(250, 252, 253));
+        buttonArbolesB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buton1MouseClicked(evt);
+                buttonArbolesBMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buton1MouseEntered(evt);
+                buttonArbolesBMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                buton1MouseExited(evt);
+                buttonArbolesBMouseExited(evt);
             }
         });
 
@@ -100,24 +101,24 @@ public class ventanaMenu extends javax.swing.JFrame {
         Ico1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\tree.png"));
         Ico1.setText("Ico1");
 
-        javax.swing.GroupLayout buton1Layout = new javax.swing.GroupLayout(buton1);
-        buton1.setLayout(buton1Layout);
-        buton1Layout.setHorizontalGroup(
-            buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buton1Layout.createSequentialGroup()
+        javax.swing.GroupLayout buttonArbolesBLayout = new javax.swing.GroupLayout(buttonArbolesB);
+        buttonArbolesB.setLayout(buttonArbolesBLayout);
+        buttonArbolesBLayout.setHorizontalGroup(
+            buttonArbolesBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonArbolesBLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-        buton1Layout.setVerticalGroup(
-            buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buton1Layout.createSequentialGroup()
+        buttonArbolesBLayout.setVerticalGroup(
+            buttonArbolesBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonArbolesBLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ico1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGroup(buttonArbolesBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ico1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -255,7 +256,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                         .addComponent(buton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(buton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonArbolesB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
@@ -268,7 +269,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonArbolesB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -462,15 +463,15 @@ public class ventanaMenu extends javax.swing.JFrame {
         buton2.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_buton2MouseEntered
 
-    private void buton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton1MouseExited
-        buton1.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_buton1MouseExited
+    private void buttonArbolesBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonArbolesBMouseExited
+        buttonArbolesB.setBackground(new Color(250, 252, 253));
+    }//GEN-LAST:event_buttonArbolesBMouseExited
 
-    private void buton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton1MouseEntered
-        buton1.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_buton1MouseEntered
+    private void buttonArbolesBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonArbolesBMouseEntered
+        buttonArbolesB.setBackground(new Color(194, 231, 255));
+    }//GEN-LAST:event_buttonArbolesBMouseEntered
 
-    private void buton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton1MouseClicked
+    private void buttonArbolesBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonArbolesBMouseClicked
         ArbolBinario pl = new ArbolBinario();
         pl.setSize(430, 480);
         pl.setLocation(0, 0);
@@ -479,9 +480,11 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.add(pl, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
+        
+        File_Reader("C:\\Users\\Bryan\\Documents\\GitHub\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura");
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_buton1MouseClicked
+    }//GEN-LAST:event_buttonArbolesBMouseClicked
 
     private void buton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseEntered
         // TODO add your handling code here:
@@ -571,10 +574,10 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel InfoB;
     private javax.swing.JPanel SizeX;
     private javax.swing.JPanel SizeY;
-    private javax.swing.JPanel buton1;
     private javax.swing.JPanel buton2;
     private javax.swing.JPanel buton3;
     private javax.swing.JPanel buton4;
+    private javax.swing.JPanel buttonArbolesB;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
