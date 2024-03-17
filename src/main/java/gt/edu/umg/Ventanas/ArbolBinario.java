@@ -31,16 +31,19 @@ public class ArbolBinario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Buton = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Buton1 = new javax.swing.JPanel();
+        Buton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        Boton2 = new javax.swing.JPanel();
+        Texto = new javax.swing.JLabel();
+
+        jLabel6.setText("jLabel6");
 
         setBackground(new java.awt.Color(250, 252, 253));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,6 +59,10 @@ public class ArbolBinario extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Generar Árbol");
 
+        jLabel4.setText("Imprimir Árbol");
+
+        jLabel5.setText("Limpiar base de datos");
+
         Buton.setBackground(new java.awt.Color(250, 252, 253));
         Buton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         Buton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,8 +77,8 @@ public class ArbolBinario extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel8.setText("Cargar");
+        jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel9.setText("Cerrar");
 
         javax.swing.GroupLayout ButonLayout = new javax.swing.GroupLayout(Buton);
         Buton.setLayout(ButonLayout);
@@ -79,53 +86,36 @@ public class ArbolBinario extends javax.swing.JPanel {
             ButonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButonLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ButonLayout.setVerticalGroup(
             ButonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel4.setText("Imprimir Árbol");
-
-        jLabel5.setText("Limpiar base de datos");
-
-        Buton1.setBackground(new java.awt.Color(250, 252, 253));
-        Buton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        Buton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Buton1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton1MouseExited(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel9.setText("Cerrar");
-
-        javax.swing.GroupLayout Buton1Layout = new javax.swing.GroupLayout(Buton1);
-        Buton1.setLayout(Buton1Layout);
-        Buton1Layout.setHorizontalGroup(
-            Buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        Buton1Layout.setVerticalGroup(
-            Buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        Boton2.setBackground(new java.awt.Color(204, 204, 204));
+        Boton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Boton2Layout = new javax.swing.GroupLayout(Boton2);
+        Boton2.setLayout(Boton2Layout);
+        Boton2Layout.setHorizontalGroup(
+            Boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        Boton2Layout.setVerticalGroup(
+            Boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        Texto.setText("Texto");
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -136,20 +126,23 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(contentLayout.createSequentialGroup()
                         .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addContainerGap(265, Short.MAX_VALUE))
-                    .addGroup(contentLayout.createSequentialGroup()
-                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(Texto)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
         contentLayout.setVerticalGroup(
@@ -158,18 +151,24 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addGap(77, 77, 77)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
-                .addComponent(Buton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addGap(53, 53, 53)
+                        .addComponent(Texto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                        .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 480));
@@ -177,48 +176,34 @@ public class ArbolBinario extends javax.swing.JPanel {
 
     private void ButonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseClicked
         // TODO add your handling code here:
-       content.setBackground(new Color(239,244,249));
-        content.removeAll();
-        content.revalidate();
-        content.repaint();
-
     }//GEN-LAST:event_ButonMouseClicked
 
     private void ButonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseEntered
         // TODO add your handling code here:
-        Buton.setBackground(new Color(194,231,255));
     }//GEN-LAST:event_ButonMouseEntered
 
     private void ButonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseExited
         // TODO add your handling code here:
-        Buton.setBackground(new Color(250,252,253));
-        
-       
     }//GEN-LAST:event_ButonMouseExited
 
-    private void Buton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton1MouseClicked
+    private void Boton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buton1MouseClicked
-
-    private void Buton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Buton1MouseEntered
-
-    private void Buton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Buton1MouseExited
+        Texto.setText("Hola progra 3");
+        
+    }//GEN-LAST:event_Boton2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Boton2;
     private javax.swing.JPanel Buton;
-    private javax.swing.JPanel Buton1;
+    private javax.swing.JLabel Texto;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

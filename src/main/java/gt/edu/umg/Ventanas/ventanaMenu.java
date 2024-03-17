@@ -481,7 +481,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
         
-        File_Reader("C:\\Users\\Bryan\\Documents\\GitHub\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura");
+        File_Reader("C:\\Users\\LENOVO\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura");
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonArbolesBMouseClicked
