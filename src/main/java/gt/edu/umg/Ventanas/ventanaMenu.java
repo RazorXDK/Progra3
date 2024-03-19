@@ -4,7 +4,7 @@
  */
 package gt.edu.umg.Ventanas;
 
-import static gt.edu.umg.GrupoII.LectorArchivo.File_Reader;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -481,7 +481,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
         
-        File_Reader("C:\\Users\\LENOVO\\OneDrive\\Documentos\\NetBeansProjects\\Proyecto\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura");
+       
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonArbolesBMouseClicked
