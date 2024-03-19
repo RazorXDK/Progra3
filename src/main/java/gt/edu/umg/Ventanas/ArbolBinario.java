@@ -365,71 +365,91 @@ public class ArbolBinario extends javax.swing.JPanel {
     }//GEN-LAST:event_ButonMouseExited
 
     private void Buton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseClicked
-        // TODO add your handling code here:
-        String rutaArchivo = "C:\\Users\\rober\\OneDrive\\Documentos\\NetBeansProjects\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura.txt";
+        String rutaArchivo = "";
 
-        // Leer el archivo y mostrar su contenido en el componente Texto
-        File_Reader(rutaArchivo, Texto);
-        
-        
-        JFrame Explorador = new JFrame();
-        Explorador.setVisible(false);
-        Explorador.setSize(500, 500);
-        
+        // Crear un nuevo JFrame para el JFileChooser
+        JFrame explorador = new JFrame();
+        explorador.setVisible(false);
+        explorador.setSize(500, 500);
+
+        // Crear un JFileChooser
         JFileChooser fileChooser = new JFileChooser();
-        int seleccion = fileChooser.showOpenDialog(Explorador);
-        
+
+        // Mostrar el diálogo para seleccionar archivos
+        int seleccion = fileChooser.showOpenDialog(explorador);
+
+        // Verificar si el usuario seleccionó un archivo
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado
+            File selectedFile = fileChooser.getSelectedFile();
+
+            // Obtener la ruta absoluta del archivo y reemplazar las barras inclinadas con dobles barras inclinadas
+            rutaArchivo = selectedFile.getAbsolutePath();
+
+            // Mostrar la dirección del archivo seleccionado en la consola
+            System.out.println("Dirección del archivo seleccionado: " + rutaArchivo);
+
+            // Llamar al método File_Reader con la ruta del archivo y el componente Texto
+            Texto.setText(rutaArchivo);
+        } else if (seleccion == JFileChooser.CANCEL_OPTION) {
+            // El usuario canceló la operación
+            System.out.println("Operación cancelada");
+        }
+        File_Reader(rutaArchivo, Texto);
+        // Cerrar el JFrame del JFileChooser
+        explorador.dispose();
+
 
     }//GEN-LAST:event_Buton2MouseClicked
 
     private void Buton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseEntered
         // TODO add your handling code here:
-        Buton2.setBackground(new Color(194,231,255));
+        Buton2.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_Buton2MouseEntered
 
     private void Buton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseEntered
         // TODO add your handling code here:
-        Buton3.setBackground(new Color(194,231,255));
+        Buton3.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_Buton3MouseEntered
 
     private void Buton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseEntered
         // TODO add your handling code here:
-        Buton4.setBackground(new Color(194,231,255));
+        Buton4.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_Buton4MouseEntered
 
     private void Buton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseEntered
         // TODO add your handling code here:
-        Buton5.setBackground(new Color(194,231,255));
+        Buton5.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_Buton5MouseEntered
 
     private void Buton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseEntered
         // TODO add your handling code here:
-        Buton6.setBackground(new Color(194,231,255));
+        Buton6.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_Buton6MouseEntered
 
     private void Buton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseExited
         // TODO add your handling code here:
-        Buton2.setBackground(new Color(250,252,253));
+        Buton2.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_Buton2MouseExited
 
     private void Buton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseExited
         // TODO add your handling code here:
-        Buton3.setBackground(new Color(250,252,253));
+        Buton3.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_Buton3MouseExited
 
     private void Buton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseExited
         // TODO add your handling code here:
-        Buton4.setBackground(new Color(250,252,253));
+        Buton4.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_Buton4MouseExited
 
     private void Buton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseExited
         // TODO add your handling code here:
-        Buton5.setBackground(new Color(250,252,253));
+        Buton5.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_Buton5MouseExited
 
     private void Buton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseExited
         // TODO add your handling code here:
-        Buton6.setBackground(new Color(250,252,253));
+        Buton6.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_Buton6MouseExited
 
 
