@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -81,19 +82,19 @@ public class ArbolBinario extends javax.swing.JPanel {
 
         jLabel6 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        Buton3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Boton2 = new javax.swing.JPanel();
+        Buton2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         Buton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        Buton4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        Buton5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        Buton6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel6");
@@ -103,50 +104,64 @@ public class ArbolBinario extends javax.swing.JPanel {
 
         content.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(250, 252, 253));
+        Buton3.setBackground(new java.awt.Color(250, 252, 253));
+        Buton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Buton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Buton3MouseExited(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel2.setText("Cargar archivos a BD");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout Buton3Layout = new javax.swing.GroupLayout(Buton3);
+        Buton3.setLayout(Buton3Layout);
+        Buton3Layout.setHorizontalGroup(
+            Buton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton3Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        Buton3Layout.setVerticalGroup(
+            Buton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        Boton2.setBackground(new java.awt.Color(250, 252, 253));
-        Boton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buton2.setBackground(new java.awt.Color(250, 252, 253));
+        Buton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Boton2MouseClicked(evt);
+                Buton2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Buton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Buton2MouseExited(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Cargar Archivo local");
 
-        javax.swing.GroupLayout Boton2Layout = new javax.swing.GroupLayout(Boton2);
-        Boton2.setLayout(Boton2Layout);
-        Boton2Layout.setHorizontalGroup(
-            Boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Boton2Layout.createSequentialGroup()
+        javax.swing.GroupLayout Buton2Layout = new javax.swing.GroupLayout(Buton2);
+        Buton2.setLayout(Buton2Layout);
+        Buton2Layout.setHorizontalGroup(
+            Buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton2Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Boton2Layout.setVerticalGroup(
-            Boton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Boton2Layout.createSequentialGroup()
+        Buton2Layout.setVerticalGroup(
+            Buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addContainerGap())
@@ -192,59 +207,89 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        Buton4.setBackground(new java.awt.Color(250, 252, 253));
+        Buton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Buton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Buton4MouseExited(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel3.setText("Generar Árbol");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout Buton4Layout = new javax.swing.GroupLayout(Buton4);
+        Buton4.setLayout(Buton4Layout);
+        Buton4Layout.setHorizontalGroup(
+            Buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton4Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        Buton4Layout.setVerticalGroup(
+            Buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        Buton5.setBackground(new java.awt.Color(250, 252, 253));
+        Buton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Buton5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Buton5MouseExited(evt);
+            }
+        });
+
         jLabel4.setText("Imprimir Árbol");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout Buton5Layout = new javax.swing.GroupLayout(Buton5);
+        Buton5.setLayout(Buton5Layout);
+        Buton5Layout.setHorizontalGroup(
+            Buton5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton5Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        Buton5Layout.setVerticalGroup(
+            Buton5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        Buton6.setBackground(new java.awt.Color(250, 252, 253));
+        Buton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Buton6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Buton6MouseExited(evt);
+            }
+        });
+
         jLabel5.setText("Limpiar base de datos");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout Buton6Layout = new javax.swing.GroupLayout(Buton6);
+        Buton6.setLayout(Buton6Layout);
+        Buton6Layout.setHorizontalGroup(
+            Buton6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton6Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        Buton6Layout.setVerticalGroup(
+            Buton6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Buton6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addContainerGap())
@@ -264,11 +309,11 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addGap(50, 50, 50))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
                 .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Boton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Buton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Buton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Buton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Buton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Buton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(contentLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
@@ -281,18 +326,18 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
-                .addComponent(Boton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Buton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Buton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Buton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Buton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Buton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -319,20 +364,82 @@ public class ArbolBinario extends javax.swing.JPanel {
         Buton.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_ButonMouseExited
 
-    private void Boton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton2MouseClicked
+    private void Buton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseClicked
         // TODO add your handling code here:
         String rutaArchivo = "C:\\Users\\rober\\OneDrive\\Documentos\\NetBeansProjects\\Progra3\\src\\main\\java\\gt\\edu\\umg\\GrupoII\\PruebaLectura.txt";
 
         // Leer el archivo y mostrar su contenido en el componente Texto
         File_Reader(rutaArchivo, Texto);
         
+        
+        JFrame Explorador = new JFrame();
+        Explorador.setVisible(false);
+        Explorador.setSize(500, 500);
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(Explorador);
+        
 
-    }//GEN-LAST:event_Boton2MouseClicked
+    }//GEN-LAST:event_Buton2MouseClicked
+
+    private void Buton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseEntered
+        // TODO add your handling code here:
+        Buton2.setBackground(new Color(194,231,255));
+    }//GEN-LAST:event_Buton2MouseEntered
+
+    private void Buton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseEntered
+        // TODO add your handling code here:
+        Buton3.setBackground(new Color(194,231,255));
+    }//GEN-LAST:event_Buton3MouseEntered
+
+    private void Buton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseEntered
+        // TODO add your handling code here:
+        Buton4.setBackground(new Color(194,231,255));
+    }//GEN-LAST:event_Buton4MouseEntered
+
+    private void Buton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseEntered
+        // TODO add your handling code here:
+        Buton5.setBackground(new Color(194,231,255));
+    }//GEN-LAST:event_Buton5MouseEntered
+
+    private void Buton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseEntered
+        // TODO add your handling code here:
+        Buton6.setBackground(new Color(194,231,255));
+    }//GEN-LAST:event_Buton6MouseEntered
+
+    private void Buton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseExited
+        // TODO add your handling code here:
+        Buton2.setBackground(new Color(250,252,253));
+    }//GEN-LAST:event_Buton2MouseExited
+
+    private void Buton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseExited
+        // TODO add your handling code here:
+        Buton3.setBackground(new Color(250,252,253));
+    }//GEN-LAST:event_Buton3MouseExited
+
+    private void Buton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseExited
+        // TODO add your handling code here:
+        Buton4.setBackground(new Color(250,252,253));
+    }//GEN-LAST:event_Buton4MouseExited
+
+    private void Buton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseExited
+        // TODO add your handling code here:
+        Buton5.setBackground(new Color(250,252,253));
+    }//GEN-LAST:event_Buton5MouseExited
+
+    private void Buton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseExited
+        // TODO add your handling code here:
+        Buton6.setBackground(new Color(250,252,253));
+    }//GEN-LAST:event_Buton6MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Boton2;
     private javax.swing.JPanel Buton;
+    private javax.swing.JPanel Buton2;
+    private javax.swing.JPanel Buton3;
+    private javax.swing.JPanel Buton4;
+    private javax.swing.JPanel Buton5;
+    private javax.swing.JPanel Buton6;
     private javax.swing.JLabel Texto;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
@@ -343,9 +450,5 @@ public class ArbolBinario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

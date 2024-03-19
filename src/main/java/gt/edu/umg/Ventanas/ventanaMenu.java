@@ -7,6 +7,8 @@ package gt.edu.umg.Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 /**
  *
@@ -68,6 +70,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         Ico6 = new javax.swing.JLabel();
         Ico5 = new javax.swing.JLabel();
         Ico7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -317,14 +320,14 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 430, 480));
+        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 870, 480));
 
         Info.setBackground(new java.awt.Color(250, 252, 253));
 
@@ -420,6 +423,9 @@ public class ventanaMenu extends javax.swing.JFrame {
 
         Background.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 250, -1));
 
+        jLabel5.setText("jLabel5");
+        Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 140, 40));
+
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         pack();
@@ -504,18 +510,25 @@ public class ventanaMenu extends javax.swing.JFrame {
     private void buton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton2MouseClicked
         // TODO add your handling code here:
         
-        Page2 pl = new Page2();
-        pl.setSize(430, 480);
-        pl.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(pl, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        
+       
+        
+        
+        
     }//GEN-LAST:event_buton2MouseClicked
 
     private void buton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton3MouseClicked
         // TODO add your handling code here:
+       
+        
+        Explorador ventana = new Explorador();
+                    ventana.setVisible(true);
+                    ventana.doLayout();
+        
+        
+        
+        
+        
         Page3 pl = new Page3();
         pl.setSize(430, 480);
         pl.setLocation(0, 0);
@@ -586,6 +599,7 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel menu;

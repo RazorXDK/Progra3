@@ -125,9 +125,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Ico4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="Ico4" min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Component id="Buton" min="-2" max="-2" attributes="0"/>
