@@ -4,6 +4,8 @@
  */
 package gt.edu.umg.Ventanas;
 
+
+import gt.edu.umg.arbolBB.Vistaa;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -229,6 +231,9 @@ public class ArbolBinario extends javax.swing.JPanel {
 
         Buton4.setBackground(new java.awt.Color(250, 252, 253));
         Buton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Buton4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Buton4MouseEntered(evt);
             }
@@ -553,6 +558,15 @@ public class ArbolBinario extends javax.swing.JPanel {
         // TODO add your handling code here:
         Buton1.setBackground(new Color(250,252,253));
     }//GEN-LAST:event_Buton1MouseExited
+
+    private void Buton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseClicked
+        // TODO add your handling code here:
+        Vistaa vista = new Vistaa();
+         vista.setLocationRelativeTo(null);
+        // Hacer visible la ventana
+        vista.setVisible(true);
+        
+    }//GEN-LAST:event_Buton4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

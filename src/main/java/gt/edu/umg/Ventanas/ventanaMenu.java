@@ -21,6 +21,7 @@ public class ventanaMenu extends javax.swing.JFrame {
      */
     public ventanaMenu() {
         initComponents();
+      
         
         Ico1.setText("");
         Ico2.setText("");
@@ -31,6 +32,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         Ico7.setText("");
         
          content.setBackground(new Color(239,244,249));
+         
 
     }
 
