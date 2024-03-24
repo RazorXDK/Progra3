@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -18,32 +20,27 @@ import javax.persistence.Table;
  * @author LENOVO
  */
 @Entity
-@Table(name = "ArbolBinario", catalog = "Prueba", schema = "POSTGRES")
+@Table(name = "arbolbinario", catalog = "ProyectoProgra3", schema = "POSTGRES")
 @NamedQueries({
-    @NamedQuery(name = "ArbolBinario.findAll", query = "SELECT a FROM ArbolBinario a")})
-public class ArbolBinario implements Serializable {
+    @NamedQuery(name = "Arbolbinario.findAll", query = "SELECT a FROM Arbolbinario a")})
+public class Arbolbinario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "Estado", nullable = false)
+    @Column(name = "estado", nullable = false)
     private Integer estado;
-    @Column(name = "Dato")
-    private Character dato;
-    @Basic(optional = false)
-    @Column(name = "ID", nullable = false)
-    private int id;
+    @Column(name = "dato")
+    private Integer dato;
+    @Column(name = "id")
+    private Integer id;
 
-    public ArbolBinario() {
+    public Arbolbinario() {
     }
 
-    public ArbolBinario(Integer estado) {
+    public Arbolbinario(Integer estado) {
         this.estado = estado;
-    }
-
-    public ArbolBinario(Integer estado, int id) {
-        this.estado = estado;
-        this.id = id;
     }
 
     public Integer getEstado() {
@@ -54,19 +51,19 @@ public class ArbolBinario implements Serializable {
         this.estado = estado;
     }
 
-    public Character getDato() {
+    public Integer getDato() {
         return dato;
     }
 
-    public void setDato(Character dato) {
+    public void setDato(Integer dato) {
         this.dato = dato;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -80,10 +77,10 @@ public class ArbolBinario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ArbolBinario)) {
+        if (!(object instanceof Arbolbinario)) {
             return false;
         }
-        ArbolBinario other = (ArbolBinario) object;
+        Arbolbinario other = (Arbolbinario) object;
         if ((this.estado == null && other.estado != null) || (this.estado != null && !this.estado.equals(other.estado))) {
             return false;
         }
@@ -92,7 +89,7 @@ public class ArbolBinario implements Serializable {
 
     @Override
     public String toString() {
-        return "newpackage.ArbolBinario[ estado=" + estado + " ]";
+        return "ORM.Arbolbinario[ estado=" + estado + " ]";
     }
     
 }

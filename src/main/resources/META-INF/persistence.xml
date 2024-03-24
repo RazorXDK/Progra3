@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>ORM.ArbolBinario</class>
     <class>ORM.NewEntity</class>
+    <class>ORM.Arbolbinario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Prueba"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

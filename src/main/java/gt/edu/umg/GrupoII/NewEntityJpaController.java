@@ -54,7 +54,7 @@ public class NewEntityJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = newEntity.getId();
+                Integer id = newEntity.getId();
                 if (findNewEntity(id) == null) {
                     throw new NonexistentEntityException("The newEntity with id " + id + " no longer exists.");
                 }
@@ -112,7 +112,7 @@ public class NewEntityJpaController implements Serializable {
         }
     }
 
-    public NewEntity findNewEntity(Long id) {
+    public NewEntity findNewEntity(Integer id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(NewEntity.class, id);
