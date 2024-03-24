@@ -5,8 +5,12 @@
 package gt.edu.umg.Ventanas;
 
 
+import gt.edu.umg.db.Arbolbinario;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
@@ -530,6 +534,29 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void buton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton3MouseClicked
         // TODO add your handling code here:
+              EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
+        EntityManager em = emf.createEntityManager();
+
+        Arbolbinario arbolBinario = new Arbolbinario();
+
+        arbolBinario.setEstado(1);
+        arbolBinario.setDato(1);
+        arbolBinario.setId(WIDTH);
+
+        try {
+            em.getTransaction().begin();
+            em.persist(arbolBinario);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            System.out.println("A ocurrido una excepcion: " + e.getMessage());
+            
+        } finally {
+            //em.close();
+            //emf.close();
+        }
+    
+
        
         
         

@@ -10,31 +10,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ *
+ * @author LENOVO
+ */
 @Entity
-public class NewEntity implements Serializable {
+public class Arbol implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     
     private Integer dato;
     private Integer estado;
 
-    // Constructor por defecto
-    public NewEntity() {
-    }
 
-    // Getters y setters para los campos
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
-
+    
     public Integer getDato() {
         return dato;
     }
@@ -51,11 +50,11 @@ public class NewEntity implements Serializable {
         this.estado = estado;
     }
 
-    // Métodos hashCode, equals y toString actualizados
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (int) id;
         hash += (dato != null ? dato.hashCode() : 0);
         hash += (estado != null ? estado.hashCode() : 0);
         return hash;
@@ -63,25 +62,29 @@ public class NewEntity implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof NewEntity)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Arbol)) {
             return false;
         }
-        NewEntity other = (NewEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        Arbol other = (Arbol) object;
+        if (this.id != other.id) {
             return false;
         }
+        
         if ((this.dato == null && other.dato != null) || (this.dato != null && !this.dato.equals(other.dato))) {
             return false;
         }
         if ((this.estado == null && other.estado != null) || (this.estado != null && !this.estado.equals(other.estado))) {
             return false;
         }
+        
         return true;
     }
 
     @Override
     public String toString() {
-        return "NewEntity{" + "id=" + id + ", dato=" + dato + ", estado=" + estado + '}';
+        return "ORM.Arbol[ id=" + id + " ]";
+     
     }
+    
 }
-

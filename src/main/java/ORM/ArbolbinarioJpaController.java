@@ -2,26 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gt.edu.umg.GrupoII;
+package ORM;
 
-import gt.edu.umg.GrupoII.exceptions.NonexistentEntityException;
+import ORM.exceptions.NonexistentEntityException;
+import gt.edu.umg.db.Arbolbinario;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import java.io.Serializable;
+import jakarta.persistence.Query;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import ORM.NewEntity;
 
 /**
  *
  * @author LENOVO
  */
-public class NewEntityJpaController implements Serializable {
+public class ArbolbinarioJpaController implements Serializable {
 
-    public NewEntityJpaController(EntityManagerFactory emf) {
+    public ArbolbinarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -30,12 +30,12 @@ public class NewEntityJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(NewEntity newEntity) {
+    public void create(Arbolbinario arbolbinario) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(newEntity);
+            em.persist(arbolbinario);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -44,19 +44,19 @@ public class NewEntityJpaController implements Serializable {
         }
     }
 
-    public void edit(NewEntity newEntity) throws NonexistentEntityException, Exception {
+    public void edit(Arbolbinario arbolbinario) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            newEntity = em.merge(newEntity);
+            arbolbinario = em.merge(arbolbinario);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = newEntity.getId();
-                if (findNewEntity(id) == null) {
-                    throw new NonexistentEntityException("The newEntity with id " + id + " no longer exists.");
+                Integer id = arbolbinario.getEstado();
+                if (findArbolbinario(id) == null) {
+                    throw new NonexistentEntityException("The arbolbinario with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -67,19 +67,19 @@ public class NewEntityJpaController implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            NewEntity newEntity;
+            Arbolbinario arbolbinario;
             try {
-                newEntity = em.getReference(NewEntity.class, id);
-                newEntity.getId();
+                arbolbinario = em.getReference(Arbolbinario.class, id);
+                arbolbinario.getEstado();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The newEntity with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The arbolbinario with id " + id + " no longer exists.", enfe);
             }
-            em.remove(newEntity);
+            em.remove(arbolbinario);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -88,19 +88,19 @@ public class NewEntityJpaController implements Serializable {
         }
     }
 
-    public List<NewEntity> findNewEntityEntities() {
-        return findNewEntityEntities(true, -1, -1);
+    public List<Arbolbinario> findArbolbinarioEntities() {
+        return findArbolbinarioEntities(true, -1, -1);
     }
 
-    public List<NewEntity> findNewEntityEntities(int maxResults, int firstResult) {
-        return findNewEntityEntities(false, maxResults, firstResult);
+    public List<Arbolbinario> findArbolbinarioEntities(int maxResults, int firstResult) {
+        return findArbolbinarioEntities(false, maxResults, firstResult);
     }
 
-    private List<NewEntity> findNewEntityEntities(boolean all, int maxResults, int firstResult) {
+    private List<Arbolbinario> findArbolbinarioEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(NewEntity.class));
+            cq.select(cq.from(Arbolbinario.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -112,20 +112,20 @@ public class NewEntityJpaController implements Serializable {
         }
     }
 
-    public NewEntity findNewEntity(Integer id) {
+    public Arbolbinario findArbolbinario(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(NewEntity.class, id);
+            return em.find(Arbolbinario.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getNewEntityCount() {
+    public int getArbolbinarioCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<NewEntity> rt = cq.from(NewEntity.class);
+            Root<Arbolbinario> rt = cq.from(Arbolbinario.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
