@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author LENOVO
+ * @author rober
  */
 public class ArbolbinarioJpaController implements Serializable {
 
@@ -53,7 +53,7 @@ public class ArbolbinarioJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = arbolbinario.getEstado();
+                Integer id = arbolbinario.getId();
                 if (findArbolbinario(id) == null) {
                     throw new NonexistentEntityException("The arbolbinario with id " + id + " no longer exists.");
                 }
@@ -74,7 +74,7 @@ public class ArbolbinarioJpaController implements Serializable {
             Arbolbinario arbolbinario;
             try {
                 arbolbinario = em.getReference(Arbolbinario.class, id);
-                arbolbinario.getEstado();
+                arbolbinario.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The arbolbinario with id " + id + " no longer exists.", enfe);
             }

@@ -3,7 +3,7 @@ package gt.edu.umg.arbolBB;
 
   /**
  *
- * @author Toloza XD
+ * @author Razor XD
  */
 
 import java.awt.*;

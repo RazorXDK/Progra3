@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Toloza XD
+ * @author Razor XD
  */
 public class SimuladorArbolBinario {
 

@@ -23,19 +23,24 @@ public class ventanaMenu extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMenu
      */
+    
+    int xMouse, yMouse;
     public ventanaMenu() {
         initComponents();
       
         
-        Ico1.setText("");
-        Ico2.setText("");
-        Ico3.setText("");
-        Ico4.setText("");
-        Ico5.setText("");
-        Ico6.setText("");
-        Ico7.setText("");
+       
         
          content.setBackground(new Color(239,244,249));
+         
+            Home pl = new Home();
+        pl.setSize(560, 480);
+        pl.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(pl, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
          
 
     }
@@ -65,7 +70,11 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         Ico4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        SizeX = new javax.swing.JPanel();
+        Home = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        Ico9 = new javax.swing.JLabel();
+        Header = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         SizeY = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
         Info = new javax.swing.JPanel();
@@ -80,10 +89,13 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Background.setBackground(new java.awt.Color(239, 244, 249));
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 8)); // NOI18N
@@ -109,8 +121,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel7.setText("Arboles Binarios");
 
-        Ico1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\tree.png"));
-        Ico1.setText("Ico1");
+        Ico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tree.png"))); // NOI18N
 
         javax.swing.GroupLayout buttonArbolesBLayout = new javax.swing.GroupLayout(buttonArbolesB);
         buttonArbolesB.setLayout(buttonArbolesBLayout);
@@ -149,17 +160,16 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Opcion2 XX");
 
-        Ico2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\123.png"));
-        Ico2.setText("Ico2");
+        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/123.png"))); // NOI18N
 
         javax.swing.GroupLayout buton2Layout = new javax.swing.GroupLayout(buton2);
         buton2.setLayout(buton2Layout);
         buton2Layout.setHorizontalGroup(
             buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buton2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(21, 21, 21)
                 .addComponent(Ico2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -189,8 +199,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Opcion3 YY");
 
-        Ico3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\abc.png"));
-        Ico3.setText("Ico3");
+        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/abc.png"))); // NOI18N
         Ico3.setToolTipText("");
 
         javax.swing.GroupLayout buton3Layout = new javax.swing.GroupLayout(buton3);
@@ -198,9 +207,9 @@ public class ventanaMenu extends javax.swing.JFrame {
         buton3Layout.setHorizontalGroup(
             buton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buton3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(20, 20, 20)
                 .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -229,17 +238,16 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel14.setText("Salir");
 
-        Ico4.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\exit.png"));
-        Ico4.setText("Ico4");
+        Ico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
 
         javax.swing.GroupLayout buton4Layout = new javax.swing.GroupLayout(buton4);
         buton4.setLayout(buton4Layout);
         buton4Layout.setHorizontalGroup(
             buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buton4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
+                .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
@@ -255,6 +263,45 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel1.setText("Entregable 1");
 
+        Home.setBackground(new java.awt.Color(250, 252, 253));
+        Home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HomeMouseExited(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel12.setText("Home");
+
+        Ico9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home.png"))); // NOI18N
+
+        javax.swing.GroupLayout HomeLayout = new javax.swing.GroupLayout(Home);
+        Home.setLayout(HomeLayout);
+        HomeLayout.setHorizontalGroup(
+            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Ico9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
+        );
+        HomeLayout.setVerticalGroup(
+            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HomeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(Ico9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -267,13 +314,16 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonArbolesB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,22 +333,44 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addComponent(buton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 250, 230));
+        Background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 250, 280));
 
-        SizeX.setBackground(new java.awt.Color(239, 244, 249));
+        Header.setBackground(new java.awt.Color(239, 244, 249));
+        Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                HeaderMouseDragged(evt);
+            }
+        });
+        Header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeaderMousePressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout SizeXLayout = new javax.swing.GroupLayout(SizeX);
-        SizeX.setLayout(SizeXLayout);
-        SizeXLayout.setHorizontalGroup(
-            SizeXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/close.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap(850, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addContainerGap())
         );
-        SizeXLayout.setVerticalGroup(
-            SizeXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        Background.add(SizeX, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 20));
+        Background.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 880, 40));
 
         SizeY.setBackground(new java.awt.Color(239, 244, 249));
 
@@ -310,10 +382,10 @@ public class ventanaMenu extends javax.swing.JFrame {
         );
         SizeYLayout.setVerticalGroup(
             SizeYLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
-        Background.add(SizeY, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 30, 570));
+        Background.add(SizeY, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 30, 560));
 
         content.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -321,14 +393,14 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 520, 480));
+        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 580, 480));
 
         Info.setBackground(new java.awt.Color(250, 252, 253));
         Info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -376,14 +448,11 @@ public class ventanaMenu extends javax.swing.JFrame {
 
         Ico6.setBackground(new java.awt.Color(153, 255, 255));
         Ico6.setForeground(new java.awt.Color(204, 204, 204));
-        Ico6.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\deployed.png"));
-        Ico6.setText("Ico6");
+        Ico6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/database.png"))); // NOI18N
 
-        Ico5.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\database.png"));
-        Ico5.setText("Ico5");
+        Ico5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/deployed.png"))); // NOI18N
 
-        Ico7.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\javascript.png"));
-        Ico7.setText("Ico7");
+        Ico7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/javascript.png"))); // NOI18N
 
         javax.swing.GroupLayout InfoLayout = new javax.swing.GroupLayout(Info);
         Info.setLayout(InfoLayout);
@@ -507,6 +576,7 @@ public class ventanaMenu extends javax.swing.JFrame {
     private void buton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseExited
         // TODO add your handling code here:
         buton4.setBackground(new Color(250,252,253));
+        
     }//GEN-LAST:event_buton4MouseExited
 
     private void buton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseClicked
@@ -575,6 +645,49 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_buton3MouseClicked
 
+    private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
+        // TODO add your handling code here:
+        xMouse =evt.getX();
+        yMouse=evt.getY();
+    }//GEN-LAST:event_HeaderMousePressed
+
+    private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
+        // TODO add your handling code here:
+        int x=evt.getXOnScreen();
+        int y=evt.getYOnScreen();
+        this.setLocation(x-xMouse, y-yMouse);
+    }//GEN-LAST:event_HeaderMouseDragged
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        // TODO add your handling code here:
+          Home pl = new Home();
+        pl.setSize(560, 480);
+        pl.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(pl, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_HomeMouseClicked
+
+    private void HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseEntered
+        // TODO add your handling code here:
+           
+        Home.setBackground(new Color(194,231,255));
+       
+    }//GEN-LAST:event_HomeMouseEntered
+
+    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
+        // TODO add your handling code here:
+          Home.setBackground(new Color(250,252,253));
+       
+    }//GEN-LAST:event_HomeMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -601,6 +714,7 @@ public class ventanaMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ventanaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -612,6 +726,8 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
+    private javax.swing.JPanel Header;
+    private javax.swing.JPanel Home;
     private javax.swing.JLabel Ico1;
     private javax.swing.JLabel Ico2;
     private javax.swing.JLabel Ico3;
@@ -619,9 +735,9 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel Ico5;
     private javax.swing.JLabel Ico6;
     private javax.swing.JLabel Ico7;
+    private javax.swing.JLabel Ico9;
     private javax.swing.JPanel Info;
     private javax.swing.JPanel InfoB;
-    private javax.swing.JPanel SizeX;
     private javax.swing.JPanel SizeY;
     private javax.swing.JPanel buton2;
     private javax.swing.JPanel buton3;
@@ -630,11 +746,13 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author LENOVO
+ * @author rober
  */
 @Entity
 @Table(name = "arbolbinario", catalog = "ProyectoProgra3", schema = "public")
@@ -29,34 +29,26 @@ public class Arbolbinario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "estado", nullable = false)
-    private Integer estado;
-    @Column(name = "dato")
-    private Integer dato;
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Integer id;
+    @Basic(optional = false)
+    @Column(name = "dato", nullable = false)
+    private int dato;
+    @Basic(optional = false)
+    @Column(name = "estado", nullable = false)
+    private int estado;
 
     public Arbolbinario() {
     }
 
-    public Arbolbinario(Integer estado) {
-        this.estado = estado;
+    public Arbolbinario(Integer id) {
+        this.id = id;
     }
 
-    public Integer getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
-
-    public Integer getDato() {
-        return dato;
-    }
-
-    public void setDato(Integer dato) {
+    public Arbolbinario(Integer id, int dato, int estado) {
+        this.id = id;
         this.dato = dato;
+        this.estado = estado;
     }
 
     public Integer getId() {
@@ -67,10 +59,26 @@ public class Arbolbinario implements Serializable {
         this.id = id;
     }
 
+    public int getDato() {
+        return dato;
+    }
+
+    public void setDato(int dato) {
+        this.dato = dato;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (estado != null ? estado.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -81,7 +89,7 @@ public class Arbolbinario implements Serializable {
             return false;
         }
         Arbolbinario other = (Arbolbinario) object;
-        if ((this.estado == null && other.estado != null) || (this.estado != null && !this.estado.equals(other.estado))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -89,7 +97,7 @@ public class Arbolbinario implements Serializable {
 
     @Override
     public String toString() {
-        return "gt.edu.umg.db.Arbolbinario[ estado=" + estado + " ]";
+        return "gt.edu.umg.db.Arbolbinario[ id=" + id + " ]";
     }
     
 }
