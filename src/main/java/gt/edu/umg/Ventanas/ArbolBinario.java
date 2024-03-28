@@ -5,15 +5,20 @@
 package gt.edu.umg.Ventanas;
 
 
+import gt.edu.umg.arbolBB.SimuladorArbolBinario;
 import gt.edu.umg.arbolBB.Vistaa;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -25,48 +30,89 @@ public class ArbolBinario extends javax.swing.JPanel {
     /**
      * Creates new form Page1
      */
+    
+     private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
     public ArbolBinario() {
         initComponents();
 
         Panel.setBackground(new Color(250, 252, 253));
-        Ico1.setText("");
-        Ico2.setText("");
-        Ico3.setText("");
-        Ico4.setText("");
-        Ico5.setText("");
+       //crearArbol(0);
 
+    }
+      private void inicializar(boolean enable) {
+        this.InOrden.setEnabled(enable);
+        this.PostOrden.setEnabled(enable);
+        this.PreOrden.setEnabled(enable);
+    }
+      
+      public void complementos(){
+        this.repintarArbol();
+    }
+    private void repintarArbol() {
+        this.jDesktopPane1.removeAll();
+        Rectangle tamaño = this.jInternalFrame2.getBounds();
+        this.jInternalFrame2 = null;
+        this.jInternalFrame2 = new JInternalFrame("Representación gráfica", true);
+        this.jDesktopPane1.add(this.jInternalFrame2, JLayeredPane.DEFAULT_LAYER);
+        this.jInternalFrame2.setVisible(true);
+        this.jInternalFrame2.setBounds(tamaño);
+        this.jInternalFrame2.setEnabled(false);
+        this.jInternalFrame2.add(this.simulador.getDibujo(), BorderLayout.CENTER);
+    }
+    
+    private void crearArbol(int i){
+         try {
+            
+            if (this.simulador.insertar(i)) {
+                //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
+                this.inicializar(true);
+                
+                complementos();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
+
+        }
     }
 
     public void File_Reader(String ruta, JLabel Texto) {
         try {
-            File archivo = new File(ruta);
-            FileReader lector = new FileReader(archivo);
-            BufferedReader buffer = new BufferedReader(lector);
-            StringBuilder mensajeCompleto = new StringBuilder(); // Construir el mensaje completo
-            String linea;
-            boolean esValido = true; // Bandera para indicar si el archivo es válido
+        File archivo = new File(ruta);
+        FileReader lector = new FileReader(archivo);
+        BufferedReader buffer = new BufferedReader(lector);
+        StringBuilder mensajeCompleto = new StringBuilder(); // Construir el mensaje completo
+        String linea;
+        boolean esValido = true; // Bandera para indicar si el archivo es válido
 
-            while ((linea = buffer.readLine()) != null) {
-                System.out.println(linea);
-                // Validar la línea actual
-                if (!validarLinea(linea)) {
-                    esValido = false;
-                    break; // Si la línea no es válida, salir del bucle
+        while ((linea = buffer.readLine()) != null) {
+            System.out.println(linea);
+            // Validar la línea actual
+            if (!validarLinea(linea)) {
+                esValido = false;
+                break; // Si la línea no es válida, salir del bucle
+            }
+            // Eliminar comas y enviar cada dato válido al método crearArbol
+            String[] datos = linea.split(","); // Separar los datos por comas
+            for (String dato : datos) {
+                dato = dato.trim(); // Eliminar espacios en blanco al inicio y al final
+                if (!dato.isEmpty()) { // Verificar que el dato no esté vacío
+                    crearArbol(Integer.parseInt(dato)); // Convertir el dato a entero y enviarlo al método crearArbol
                 }
-                mensajeCompleto.append(linea).append("\n"); // Agregar cada línea al mensaje completo
             }
-            buffer.close();
-
-            if (esValido) {
-                // Configurar el texto en el componente Texto
-                Texto.setText(mensajeCompleto.toString());
-            } else {
-                // Mostrar mensaje de error
-                Texto.setText("El formato del archivo debe contener solo números y comas.");
-            }
-        } catch (Exception e) {
-            System.out.println("Error al cargar el archivo: " + e.getMessage());
+            mensajeCompleto.append(linea).append("\n"); // Agregar cada línea al mensaje completo
         }
+        buffer.close();
+
+        if (esValido) {
+            // Configurar el texto en el componente Texto
+            Texto.setText(mensajeCompleto.toString());
+        } else {
+            // Mostrar mensaje de error
+            Texto.setText("El formato del archivo debe contener solo números y comas.");
+        }
+    } catch (Exception e) {
+        System.out.println("Error al cargar el archivo: " + e.getMessage());
+    }
     }
 
     private boolean validarLinea(String linea) {
@@ -94,28 +140,24 @@ public class ArbolBinario extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         Panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        Ico1 = new javax.swing.JLabel();
+        Ico2 = new javax.swing.JLabel();
+        Ico3 = new javax.swing.JLabel();
+        Ico4 = new javax.swing.JLabel();
+        Ico5 = new javax.swing.JLabel();
+        InOrden = new javax.swing.JButton();
+        PostOrden = new javax.swing.JButton();
+        PreOrden = new javax.swing.JButton();
         Buton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        Buton2 = new javax.swing.JPanel();
-        Ico1 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        Buton4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        Ico3 = new javax.swing.JLabel();
-        Buton5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        Ico4 = new javax.swing.JLabel();
-        Buton6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        Ico5 = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
-        Buton1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        Ico2 = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel6");
 
         setBackground(new java.awt.Color(250, 252, 253));
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         content.setBackground(new java.awt.Color(51, 51, 255));
@@ -156,6 +198,113 @@ public class ArbolBinario extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Arboles Binarios");
 
+        jDesktopPane1.setBackground(new java.awt.Color(102, 102, 102));
+
+        jInternalFrame2.setBorder(null);
+        jInternalFrame2.setIconifiable(true);
+        jInternalFrame2.setOpaque(true);
+        jInternalFrame2.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+        jInternalFrame2Layout.setHorizontalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jInternalFrame2Layout.setVerticalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 336, Short.MAX_VALUE)
+        );
+
+        jDesktopPane1.add(jInternalFrame2);
+        jInternalFrame2.setBounds(10, 10, 400, 360);
+
+        Ico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/folder.png"))); // NOI18N
+        Ico1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Ico1MouseClicked(evt);
+            }
+        });
+
+        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cloud.png"))); // NOI18N
+
+        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AutoGenerate.png"))); // NOI18N
+
+        Ico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/print.png"))); // NOI18N
+
+        Ico5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reset.png"))); // NOI18N
+
+        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
+        Panel.setLayout(PanelLayout);
+        PanelLayout.setHorizontalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ico2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ico4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Ico5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 206, Short.MAX_VALUE))
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
+        );
+        PanelLayout.setVerticalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ico5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ico2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ico1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ico3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(Buton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(Buton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
+            .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+        );
+
+        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 480));
+
+        InOrden.setText("jButton1");
+        add(InOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
+
+        PostOrden.setText("jButton2");
+        add(PostOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
+
+        PreOrden.setText("jButton3");
+        add(PreOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
+
         Buton.setBackground(new java.awt.Color(250, 252, 253));
         Buton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         Buton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,256 +339,11 @@ public class ArbolBinario extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        Buton2.setBackground(new java.awt.Color(250, 252, 253));
-        Buton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Buton2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton2MouseExited(evt);
-            }
-        });
-
-        Ico1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\folder.png"));
-        Ico1.setText("Ico");
-
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel10.setText("Cargar archivo local");
-
-        javax.swing.GroupLayout Buton2Layout = new javax.swing.GroupLayout(Buton2);
-        Buton2.setLayout(Buton2Layout);
-        Buton2Layout.setHorizontalGroup(
-            Buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
-        Buton2Layout.setVerticalGroup(
-            Buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buton2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Ico1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        Buton4.setBackground(new java.awt.Color(250, 252, 253));
-        Buton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Buton4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton4MouseExited(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel3.setText("Generar Árbol");
-
-        Ico3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\AutoGenerate.png"));
-        Ico3.setText("Ico3");
-
-        javax.swing.GroupLayout Buton4Layout = new javax.swing.GroupLayout(Buton4);
-        Buton4.setLayout(Buton4Layout);
-        Buton4Layout.setHorizontalGroup(
-            Buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton4Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Buton4Layout.setVerticalGroup(
-            Buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Buton4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Ico3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        Buton5.setBackground(new java.awt.Color(250, 252, 253));
-        Buton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton5MouseExited(evt);
-            }
-        });
-
-        jLabel4.setText("Imprimir Árbol");
-
-        Ico4.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\print.png"));
-        Ico4.setText("Ico4");
-
-        javax.swing.GroupLayout Buton5Layout = new javax.swing.GroupLayout(Buton5);
-        Buton5.setLayout(Buton5Layout);
-        Buton5Layout.setHorizontalGroup(
-            Buton5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton5Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(Ico4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Buton5Layout.setVerticalGroup(
-            Buton5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        Buton6.setBackground(new java.awt.Color(250, 252, 253));
-        Buton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton6MouseExited(evt);
-            }
-        });
-
-        jLabel5.setText("Limpiar base de datos");
-
-        Ico5.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\reset.png"));
-        Ico5.setText("ICo5");
-
-        javax.swing.GroupLayout Buton6Layout = new javax.swing.GroupLayout(Buton6);
-        Buton6.setLayout(Buton6Layout);
-        Buton6Layout.setHorizontalGroup(
-            Buton6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton6Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(Ico5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Buton6Layout.setVerticalGroup(
-            Buton6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(Ico5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(Buton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
 
         Texto.setText("Texto");
         Texto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
-
-        Buton1.setBackground(new java.awt.Color(250, 252, 253));
-        Buton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Buton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Buton1MouseExited(evt);
-            }
-        });
-
-        jLabel8.setText("Cargar a DB");
-
-        Ico2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\cloud.png"));
-        Ico2.setText("Ico2");
-
-        javax.swing.GroupLayout Buton1Layout = new javax.swing.GroupLayout(Buton1);
-        Buton1.setLayout(Buton1Layout);
-        Buton1Layout.setHorizontalGroup(
-            Buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(Ico2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Buton1Layout.setVerticalGroup(
-            Buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Buton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Ico2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
-        Panel.setLayout(PanelLayout);
-        PanelLayout.setHorizontalGroup(
-            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Buton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Buton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Buton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PanelLayout.createSequentialGroup()
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(Texto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        PanelLayout.setVerticalGroup(
-            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addGap(12, 12, 12)
-                .addComponent(Buton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Buton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Buton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Buton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentLayout.createSequentialGroup()
-                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(Buton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(Buton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-        );
-
-        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 480));
+        add(Texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 129, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseClicked
@@ -461,8 +365,20 @@ public class ArbolBinario extends javax.swing.JPanel {
         Buton.setBackground(new Color(250, 252, 253));
     }//GEN-LAST:event_ButonMouseExited
 
-    private void Buton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseClicked
-        String rutaArchivo = "";
+    private void Buton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseEntered
+        // TODO add your handling code here:
+        Buton3.setBackground(new Color(194, 231, 255));
+    }//GEN-LAST:event_Buton3MouseEntered
+
+    private void Buton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseExited
+        // TODO add your handling code here:
+        Buton3.setBackground(new Color(250, 252, 253));
+    }//GEN-LAST:event_Buton3MouseExited
+
+    private void Ico1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ico1MouseClicked
+        // TODO add your handling code here:
+         String rutaArchivo = "";
+        simulador.vaciarA();
 
         // Crear un nuevo JFrame para el JFileChooser
         JFrame explorador = new JFrame();
@@ -495,104 +411,28 @@ public class ArbolBinario extends javax.swing.JPanel {
         File_Reader(rutaArchivo, Texto);
         // Cerrar el JFrame del JFileChooser
         explorador.dispose();
-
-
-    }//GEN-LAST:event_Buton2MouseClicked
-
-    private void Buton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseEntered
-        // TODO add your handling code here:
-        Buton2.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_Buton2MouseEntered
-
-    private void Buton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseEntered
-        // TODO add your handling code here:
-        Buton3.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_Buton3MouseEntered
-
-    private void Buton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseEntered
-        // TODO add your handling code here:
-        Buton4.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_Buton4MouseEntered
-
-    private void Buton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseEntered
-        // TODO add your handling code here:
-        Buton5.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_Buton5MouseEntered
-
-    private void Buton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseEntered
-        // TODO add your handling code here:
-        Buton6.setBackground(new Color(194, 231, 255));
-    }//GEN-LAST:event_Buton6MouseEntered
-
-    private void Buton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton2MouseExited
-        // TODO add your handling code here:
-        Buton2.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_Buton2MouseExited
-
-    private void Buton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton3MouseExited
-        // TODO add your handling code here:
-        Buton3.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_Buton3MouseExited
-
-    private void Buton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseExited
-        // TODO add your handling code here:
-        Buton4.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_Buton4MouseExited
-
-    private void Buton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton5MouseExited
-        // TODO add your handling code here:
-        Buton5.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_Buton5MouseExited
-
-    private void Buton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton6MouseExited
-        // TODO add your handling code here:
-        Buton6.setBackground(new Color(250, 252, 253));
-    }//GEN-LAST:event_Buton6MouseExited
-
-    private void Buton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton1MouseEntered
-        // TODO add your handling code here:
-        Buton1.setBackground(new Color(194,231,255));
-    }//GEN-LAST:event_Buton1MouseEntered
-
-    private void Buton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton1MouseExited
-        // TODO add your handling code here:
-        Buton1.setBackground(new Color(250,252,253));
-    }//GEN-LAST:event_Buton1MouseExited
-
-    private void Buton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buton4MouseClicked
-        // TODO add your handling code here:
-        Vistaa vista = new Vistaa();
-         vista.setLocationRelativeTo(null);
-        // Hacer visible la ventana
-        vista.setVisible(true);
-        
-    }//GEN-LAST:event_Buton4MouseClicked
+    }//GEN-LAST:event_Ico1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buton;
-    private javax.swing.JPanel Buton1;
-    private javax.swing.JPanel Buton2;
     private javax.swing.JPanel Buton3;
-    private javax.swing.JPanel Buton4;
-    private javax.swing.JPanel Buton5;
-    private javax.swing.JPanel Buton6;
     private javax.swing.JLabel Ico1;
     private javax.swing.JLabel Ico2;
     private javax.swing.JLabel Ico3;
     private javax.swing.JLabel Ico4;
     private javax.swing.JLabel Ico5;
+    private javax.swing.JButton InOrden;
     private javax.swing.JPanel Panel;
+    private javax.swing.JButton PostOrden;
+    private javax.swing.JButton PreOrden;
     private javax.swing.JLabel Texto;
     private javax.swing.JPanel content;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

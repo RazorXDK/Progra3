@@ -58,4 +58,9 @@ public class SimuladorArbolBinario {
     public JPanel getDibujo() {
         return this.miArbol.getdibujo();
     }
+    
+    public void vaciarA(){
+    miArbol.vaciar();
+}
+    
 }

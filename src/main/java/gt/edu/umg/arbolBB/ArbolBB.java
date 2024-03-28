@@ -136,4 +136,8 @@ public class ArbolBB {
      public JPanel getdibujo() {
         return new ArbolExpresionGrafico(this);
     }
+     
+     public void vaciar() {
+        raiz = null; // Asignar null a la raíz hace que todos los nodos sean eliminados por el recolector de basura
+    }
 }

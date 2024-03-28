@@ -5,14 +5,12 @@
 package gt.edu.umg.Ventanas;
 
 
-import gt.edu.umg.db.Arbolbinario;
+import gt.edu.umg.db.Final;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 /**
  *
@@ -177,9 +175,9 @@ public class ventanaMenu extends javax.swing.JFrame {
             buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buton2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ico2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGroup(buton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ico2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -255,9 +253,9 @@ public class ventanaMenu extends javax.swing.JFrame {
             buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buton4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(buton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -607,11 +605,11 @@ public class ventanaMenu extends javax.swing.JFrame {
               EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
         EntityManager em = emf.createEntityManager();
 
-        Arbolbinario arbolBinario = new Arbolbinario();
+        Final arbolBinario = new Final();
 
-        arbolBinario.setEstado(1);
-        arbolBinario.setDato(1);
-        arbolBinario.setId(WIDTH);
+        //arbolBinario.setEstado(1);
+        //arbolBinario.setDato(1);
+        //arbolBinario.setId(WIDTH);
 
         try {
             em.getTransaction().begin();

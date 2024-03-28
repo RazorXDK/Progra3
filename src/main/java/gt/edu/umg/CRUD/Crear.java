@@ -4,7 +4,7 @@
  */
 package gt.edu.umg.CRUD;
 
-import gt.edu.umg.db.Arbolbinario;
+import gt.edu.umg.db.Final;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -19,9 +19,9 @@ public class Crear {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
         EntityManager em = emf.createEntityManager();
 
-        Arbolbinario arbolBinario = new Arbolbinario();
-        arbolBinario.setEstado(estado);
-        arbolBinario.setDato(dato);
+        Final arbolBinario = new Final();
+        //arbolBinario.setEstado(estado);
+        //arbolBinario.setDato(dato);
 
         try {
             em.getTransaction().begin();
