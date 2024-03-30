@@ -5,7 +5,7 @@
 package gt.edu.umg.Ventanas;
 
 
-import gt.edu.umg.db.Final;
+import gt.edu.umg.db.Arbol;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.persistence.EntityManager;
@@ -605,10 +605,10 @@ public class ventanaMenu extends javax.swing.JFrame {
               EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
         EntityManager em = emf.createEntityManager();
 
-        Final arbolBinario = new Final();
+        Arbol arbolBinario = new Arbol();
 
-        //arbolBinario.setEstado(1);
-        //arbolBinario.setDato(1);
+        arbolBinario.setEstado(18350);
+        arbolBinario.setDato(18350);
         //arbolBinario.setId(WIDTH);
 
         try {
