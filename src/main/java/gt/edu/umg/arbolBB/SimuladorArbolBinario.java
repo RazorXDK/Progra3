@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Toloza XD
+ * @author Razor XD
  */
 public class SimuladorArbolBinario {
 
@@ -58,4 +58,9 @@ public class SimuladorArbolBinario {
     public JPanel getDibujo() {
         return this.miArbol.getdibujo();
     }
+    
+    public void vaciarA(){
+    miArbol.vaciar();
+}
+    
 }

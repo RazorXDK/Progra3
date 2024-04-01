@@ -1,7 +1,7 @@
 package gt.edu.umg.arbolBB;
 /**
  *
- * @author ploks
+ * @author Razor
  */
 import java.awt.Dimension;
 import java.awt.Graphics;

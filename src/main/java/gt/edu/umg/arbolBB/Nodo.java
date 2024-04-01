@@ -7,7 +7,7 @@ package gt.edu.umg.arbolBB;
 
 /**
  *
- * @author Toloza XD
+ * @author Razor XD
  */
 public class Nodo {
     private int dato;

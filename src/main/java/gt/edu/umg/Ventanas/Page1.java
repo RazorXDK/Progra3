@@ -54,6 +54,7 @@ public class Page1 extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         Buton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 252, 253));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,21 +72,17 @@ public class Page1 extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel2.setText("Emily Hernandez Morales ");
 
-        Ico1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\guide.png"));
-        Ico1.setText("Ico1");
+        Ico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/deployed.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel3.setText("Mario Roberto Grajeda");
         jLabel3.setToolTipText("");
 
-        Ico2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\database.png"));
-        Ico2.setText("Ico2");
+        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/database.png"))); // NOI18N
 
-        Ico3.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\terminal.png"));
-        Ico3.setText("Ico3");
+        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/code.png"))); // NOI18N
 
-        Ico4.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\code.png"));
-        Ico4.setText("Ico4");
+        Ico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/terminal.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Repositorio Git");
@@ -94,7 +91,7 @@ public class Page1 extends javax.swing.JPanel {
         jLabel4.setText("ORM Jpa controller");
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel10.setText("Conexion a BD");
+        jLabel10.setText("Conexion a BD jdbc");
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel11.setText("Gerson Herrera");
@@ -104,7 +101,8 @@ public class Page1 extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel13.setText("Brayan Mollinedo");
 
-        jLabel14.setText("jLabel14");
+        jLabel14.setText("CRUD Postgres ");
+        jLabel14.setToolTipText("");
 
         Buton.setBackground(new java.awt.Color(250, 252, 253));
         Buton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -140,6 +138,8 @@ public class Page1 extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel5.setText("Arbol Binario");
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
@@ -170,9 +170,8 @@ public class Page1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,7 +193,9 @@ public class Page1 extends javax.swing.JPanel {
                         .addGap(7, 7, 7)
                         .addComponent(jLabel12))
                     .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,6 +276,7 @@ public class Page1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
