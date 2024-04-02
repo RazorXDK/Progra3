@@ -4,10 +4,9 @@
  */
 package CRUD;
 
-import ORM.ArbolBinario;
+import gt.edu.umg.db.Arbol;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -15,25 +14,31 @@ import javax.persistence.Persistence;
  */
 public class Crear {
 
-    public static void crearArbol(int estado, Character dato) throws Exception {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
+    private EntityManager em = null;
+    private EntityManagerFactory emf = null;
 
-        ArbolBinario arbolBinario = new ArbolBinario();
-        arbolBinario.setEstado(estado);
-        arbolBinario.setDato(dato);
+    public Crear(EntityManager em, EntityManagerFactory emf) {
+        this.em = em;
+        this.emf = emf;
+    }
+
+    public void crearArbol(int estado, int dato) throws Exception {
+
+        Arbol arbol = new Arbol();
+        arbol.setEstado(estado);
+        arbol.setDato(dato);
 
         try {
             em.getTransaction().begin();
-            em.persist(arbolBinario);
+            em.persist(arbol);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             System.out.println("A ocurrido una excepcion: " + e.getMessage());
-            
+
         } finally {
-            em.close();
-            emf.close();
+            //em.close();
+            //emf.close();
         }
     }
 

@@ -6,6 +6,9 @@ package gt.edu.umg.GrupoII;
 import gt.edu.umg.Ventanas.ventanaMenu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -14,6 +17,9 @@ import java.util.Scanner;
 public class Grupo2 {
 
     public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
+        EntityManager em = emf.createEntityManager();
+
         int opc = 0;
         Scanner sc = new Scanner(System.in);
         do {
@@ -26,15 +32,16 @@ public class Grupo2 {
             try {
                 opc = sc.nextInt();
                 sc.nextLine();
-                switch(opc){
-                    case 1: { System.out.println("Entro en case 1");
+                switch (opc) {
+                    case 1: {
+                        System.out.println("Entro en case 1");
                         ventanaMenu ventana = new ventanaMenu();
-                    ventana.setVisible(true);
-                    ventana.doLayout();
-                    
-                    break;
+                        ventana.setVisible(true);
+                        ventana.doLayout();
+
+                        break;
                     }
-                    
+
                 }
             } catch (InputMismatchException e) {
 
@@ -44,8 +51,7 @@ public class Grupo2 {
 
                 System.out.println("Ha ocurrido una excepción.");
             } finally {
-               
-                
+
             }
 
         } while (opc != 4);

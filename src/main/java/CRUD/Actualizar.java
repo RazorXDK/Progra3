@@ -4,28 +4,32 @@
  */
 package CRUD;
 
-import ORM.ArbolBinario;
+import gt.edu.umg.db.Arbol;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
 
 /**
  *
  * @author Herrera
  */
 public class Actualizar {
+    private EntityManager em = null;
+    private EntityManagerFactory emf = null;
 
-    public static void ActualizarArbol(int id, int estado, Character dato) throws Exception {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
+    public Actualizar(EntityManager em, EntityManagerFactory emf) {
+        this.em = em;
+        this.emf = emf;
+    }
 
-        ArbolBinario arbolBinario = em.find(ArbolBinario.class, id);
-        arbolBinario.setEstado(estado);
-        arbolBinario.setDato(dato);
+    public void ActualizarArbol(int id, int estado, int dato) throws Exception {
+        Arbol arbol = em.find(Arbol.class, id);
+        arbol.setEstado(estado);
+        arbol.setDato(dato);
 
         try {
             em.getTransaction().begin();
-            em.merge(arbolBinario);
+            em.merge(arbol);
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
@@ -33,8 +37,8 @@ public class Actualizar {
             System.out.println("A ocurrido una excepcion: " + e.getMessage());
 
         } finally {
-            em.close();
-            emf.close();
+            //em.close();
+            //emf.close();
         }
     }
 

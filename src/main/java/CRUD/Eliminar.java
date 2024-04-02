@@ -4,12 +4,9 @@
  */
 package CRUD;
 
-import java.util.ArrayList;
-import java.util.List;
-import ORM.ArbolBinario;
+import gt.edu.umg.db.Arbol;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -17,23 +14,29 @@ import javax.persistence.Persistence;
  */
 public class Eliminar {
 
-    public static void EliminarArbol(int id) throws Exception {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
+    private EntityManager em = null;
+    private EntityManagerFactory emf = null;
 
-        ArbolBinario arbolBinario = em.find(ArbolBinario.class, id);
+    public Eliminar(EntityManager em, EntityManagerFactory emf) {
+        this.em = em;
+        this.emf = emf;
+    }
+
+    public void EliminarArbol(int id) throws Exception {
+
+        Arbol arbol = em.find(Arbol.class, id);
 
         try {
             em.getTransaction().begin();
-            em.remove(arbolBinario);
+            em.remove(arbol);
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
             System.out.println("A ocurrido una excepcion: " + e.getMessage());
 
         } finally {
-            em.close();
-            emf.close();
+            //em.close();
+            //emf.close();
         }
     }
 
