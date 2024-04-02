@@ -4,15 +4,24 @@
  */
 package gt.edu.umg.Ventanas;
 
-
+import CRUD.Actualizar;
+import CRUD.Crear;
+import CRUD.Eliminar;
+import Database.CrearBd;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
 import gt.edu.umg.arbolBB.Vistaa;
+import gt.edu.umg.db.Arbol;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -30,24 +39,28 @@ public class ArbolBinario extends javax.swing.JPanel {
     /**
      * Creates new form Page1
      */
-    
-     private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
+    private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
+    EntityManager em = emf.createEntityManager();
+
     public ArbolBinario() {
         initComponents();
 
         Panel.setBackground(new Color(250, 252, 253));
-       //crearArbol(0);
+        //crearArbol(0);
 
     }
-      private void inicializar(boolean enable) {
+
+    private void inicializar(boolean enable) {
         this.InOrden.setEnabled(enable);
         this.PostOrden.setEnabled(enable);
         this.PreOrden.setEnabled(enable);
     }
-      
-      public void complementos(){
+
+    public void complementos() {
         this.repintarArbol();
     }
+
     private void repintarArbol() {
         this.jDesktopPane1.removeAll();
         Rectangle tamaño = this.jInternalFrame2.getBounds();
@@ -59,14 +72,14 @@ public class ArbolBinario extends javax.swing.JPanel {
         this.jInternalFrame2.setEnabled(false);
         this.jInternalFrame2.add(this.simulador.getDibujo(), BorderLayout.CENTER);
     }
-    
-    private void crearArbol(int i){
-         try {
-            
+
+    private void crearArbol(int i) {
+        try {
+
             if (this.simulador.insertar(i)) {
                 //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
                 this.inicializar(true);
-                
+
                 complementos();
             }
         } catch (Exception e) {
@@ -77,42 +90,51 @@ public class ArbolBinario extends javax.swing.JPanel {
 
     public void File_Reader(String ruta, JLabel Texto) {
         try {
-        File archivo = new File(ruta);
-        FileReader lector = new FileReader(archivo);
-        BufferedReader buffer = new BufferedReader(lector);
-        StringBuilder mensajeCompleto = new StringBuilder(); // Construir el mensaje completo
-        String linea;
-        boolean esValido = true; // Bandera para indicar si el archivo es válido
+            File archivo = new File(ruta);
+            FileReader lector = new FileReader(archivo);
+            BufferedReader buffer = new BufferedReader(lector);
+            StringBuilder mensajeCompleto = new StringBuilder(); // Construir el mensaje completo
+            String linea;
+            boolean esValido = true; // Bandera para indicar si el archivo es válido
 
-        while ((linea = buffer.readLine()) != null) {
-            System.out.println(linea);
-            // Validar la línea actual
-            if (!validarLinea(linea)) {
-                esValido = false;
-                break; // Si la línea no es válida, salir del bucle
-            }
-            // Eliminar comas y enviar cada dato válido al método crearArbol
-            String[] datos = linea.split(","); // Separar los datos por comas
-            for (String dato : datos) {
-                dato = dato.trim(); // Eliminar espacios en blanco al inicio y al final
-                if (!dato.isEmpty()) { // Verificar que el dato no esté vacío
-                    crearArbol(Integer.parseInt(dato)); // Convertir el dato a entero y enviarlo al método crearArbol
+            while ((linea = buffer.readLine()) != null) {
+                System.out.println(linea);
+                // Validar la línea actual
+                if (!validarLinea(linea)) {
+                    esValido = false;
+                    break; // Si la línea no es válida, salir del bucle
                 }
-            }
-            mensajeCompleto.append(linea).append("\n"); // Agregar cada línea al mensaje completo
-        }
-        buffer.close();
+                // Eliminar comas y enviar cada dato válido al método crearArbol
+                String[] datos = linea.split(","); // Separar los datos por comas
+                for (String dato : datos) {
+                    dato = dato.trim(); // Eliminar espacios en blanco al inicio y al final
+                    if (!dato.isEmpty()) { // Verificar que el dato no esté vacío
 
-        if (esValido) {
-            // Configurar el texto en el componente Texto
-            Texto.setText(mensajeCompleto.toString());
-        } else {
-            // Mostrar mensaje de error
-            Texto.setText("El formato del archivo debe contener solo números y comas.");
+                        int a = Integer.parseInt(dato);
+                        //crearArbol(a); // Convertir el dato a entero y enviarlo al método crearArbol
+
+                        Crear cre = new Crear(em, emf);
+                        cre.crearArbol(a);
+
+                    }
+                }
+                mensajeCompleto.append(linea).append("\n"); // Agregar cada línea al mensaje completo
+            }
+            buffer.close();
+
+            if (esValido) {
+                // Configurar el texto en el componente Texto
+                Texto.setText(mensajeCompleto.toString());
+                JOptionPane.showMessageDialog(null, "Archivo cargado a Base de Datos");
+            } else {
+                // Mostrar mensaje de error
+                Texto.setText("El formato del archivo debe contener solo números y comas.");
+                JOptionPane.showMessageDialog(null, "El formato del archivo debe contener solo números y comas.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar el archivo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al cargar el archivo: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error al cargar el archivo: " + e.getMessage());
-    }
     }
 
     private boolean validarLinea(String linea) {
@@ -143,7 +165,6 @@ public class ArbolBinario extends javax.swing.JPanel {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         Ico1 = new javax.swing.JLabel();
-        Ico2 = new javax.swing.JLabel();
         Ico3 = new javax.swing.JLabel();
         Ico4 = new javax.swing.JLabel();
         Ico5 = new javax.swing.JLabel();
@@ -213,65 +234,86 @@ public class ArbolBinario extends javax.swing.JPanel {
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 336, Short.MAX_VALUE)
+            .addGap(0, 316, Short.MAX_VALUE)
         );
 
         jDesktopPane1.add(jInternalFrame2);
-        jInternalFrame2.setBounds(10, 10, 400, 360);
+        jInternalFrame2.setBounds(10, 20, 400, 340);
 
-        Ico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/folder.png"))); // NOI18N
+        Ico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cloud.png"))); // NOI18N
+        Ico1.setText("Cargar a DB");
         Ico1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Ico1MouseClicked(evt);
             }
         });
 
-        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cloud.png"))); // NOI18N
-
-        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/AutoGenerate.png"))); // NOI18N
+        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nodo.png"))); // NOI18N
+        Ico3.setText("Generar Arbol");
+        Ico3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Ico3MouseClicked(evt);
+            }
+        });
 
         Ico4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/print.png"))); // NOI18N
+        Ico4.setText("Imprimir Arbol");
+        Ico4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Ico4MouseClicked(evt);
+            }
+        });
 
         Ico5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reset.png"))); // NOI18N
+        Ico5.setText("Eliminar arbol");
+        Ico5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Ico5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(PanelLayout.createSequentialGroup()
-                        .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Ico2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Ico4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Ico5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 206, Short.MAX_VALUE))
-            .addGroup(PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+                        .addGap(28, 28, 28)
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(PanelLayout.createSequentialGroup()
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Ico4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Ico1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Ico5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(15, 15, 15)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Ico5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ico2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ico1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ico3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Ico4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Ico1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ico3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Ico4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Ico5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -377,8 +419,10 @@ public class ArbolBinario extends javax.swing.JPanel {
 
     private void Ico1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ico1MouseClicked
         // TODO add your handling code here:
-         String rutaArchivo = "";
+
+        String rutaArchivo = "";
         simulador.vaciarA();
+        complementos();
 
         // Crear un nuevo JFrame para el JFileChooser
         JFrame explorador = new JFrame();
@@ -393,6 +437,8 @@ public class ArbolBinario extends javax.swing.JPanel {
 
         // Verificar si el usuario seleccionó un archivo
         if (seleccion == JFileChooser.APPROVE_OPTION) {
+            CrearBd crearBd = new CrearBd();
+            crearBd.comprobarTablaArbol();
             // Obtener el archivo seleccionado
             File selectedFile = fileChooser.getSelectedFile();
 
@@ -413,12 +459,63 @@ public class ArbolBinario extends javax.swing.JPanel {
         explorador.dispose();
     }//GEN-LAST:event_Ico1MouseClicked
 
+    private void Ico3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ico3MouseClicked
+        // TODO add your handling code here:
+        complementos();
+        simulador.vaciarA();
+        Actualizar actu = new Actualizar(em, emf);
+        actu.actualizarTodosLosArboles();
+
+
+    }//GEN-LAST:event_Ico3MouseClicked
+
+    private void Ico5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ico5MouseClicked
+        // TODO add your handling code here:
+        complementos();
+        simulador.vaciarA();
+        Eliminar eli = new Eliminar(em, emf);
+        eli.borrarTodosLosArboles();
+
+    }//GEN-LAST:event_Ico5MouseClicked
+
+    private void Ico4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ico4MouseClicked
+        // TODO add your handling code here:
+        simulador.vaciarA();
+        complementos();
+        try {
+            em.getTransaction().begin();
+
+            Query query = em.createQuery("SELECT a FROM Arbol a WHERE a.estado = 1");
+            List<Arbol> arboles = query.getResultList();
+
+            if (!arboles.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Arbol Binario");
+                for (Arbol arbol : arboles) {
+                    crearArbol(arbol.getDato()); // Suponiendo que crearArbol toma como argumento el Dato del árbol
+                }
+            } else {
+                System.out.println("No hay árboles con estado igual a 1 en la base de datos.");
+                JOptionPane.showMessageDialog(null, "No hay árboles con estado igual a 1 en la base de datos.");
+            }
+
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+            System.out.println("Ha ocurrido una excepción: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ha ocurrido una excepción: " + e.getMessage());
+        } finally {
+            //em.close(); // Esto depende de cómo estés gestionando tus EntityManagers
+            //emf.close();
+        }
+    }//GEN-LAST:event_Ico4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buton;
     private javax.swing.JPanel Buton3;
     private javax.swing.JLabel Ico1;
-    private javax.swing.JLabel Ico2;
     private javax.swing.JLabel Ico3;
     private javax.swing.JLabel Ico4;
     private javax.swing.JLabel Ico5;

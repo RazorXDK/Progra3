@@ -602,28 +602,7 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void buton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton3MouseClicked
         // TODO add your handling code here:
-              EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
-        EntityManager em = emf.createEntityManager();
-
-        Arbol arbolBinario = new Arbol();
-
-        arbolBinario.setEstado(18350);
-        arbolBinario.setDato(18350);
-        //arbolBinario.setId(WIDTH);
-
-        try {
-            em.getTransaction().begin();
-            em.persist(arbolBinario);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            System.out.println("A ocurrido una excepcion: " + e.getMessage());
-            
-        } finally {
-            //em.close();
-            //emf.close();
-        }
-    
+          
 
        
         

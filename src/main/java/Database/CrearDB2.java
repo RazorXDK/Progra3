@@ -12,7 +12,7 @@ import java.sql.Statement;
  *
  * @author Bryan
  */
-public class CrearDB{
+public class CrearDB2{
  static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     static final String USER = "postgres";
     static final String PASSWORD = "123456";

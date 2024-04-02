@@ -22,10 +22,10 @@ public class Crear {
         this.emf = emf;
     }
 
-    public void crearArbol(int estado, int dato) throws Exception {
+    public void crearArbol(int dato) throws Exception {
 
         Arbol arbol = new Arbol();
-        arbol.setEstado(estado);
+        arbol.setEstado(0);
         arbol.setDato(dato);
 
         try {

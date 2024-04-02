@@ -5,15 +5,18 @@
 package CRUD;
 
 import gt.edu.umg.db.Arbol;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
+import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Herrera
  */
 public class Actualizar {
+
     private EntityManager em = null;
     private EntityManagerFactory emf = null;
 
@@ -42,4 +45,34 @@ public class Actualizar {
         }
     }
 
+    public void actualizarTodosLosArboles() {
+        try {
+            em.getTransaction().begin();
+
+            Query query = em.createQuery("SELECT a FROM Arbol a");
+            List<Arbol> arboles = query.getResultList();
+
+            if (!arboles.isEmpty()) {
+                for (Arbol arbol : arboles) {
+                    arbol.setEstado(1);
+                    em.merge(arbol);
+                }
+            } else {
+                System.out.println("La tabla Arbol está vacía. No hay ningún registro para actualizar.");
+                JOptionPane.showMessageDialog(null, "La tabla Arbol está vacía. No hay ningún registro para actualizar.");
+            }
+
+            em.getTransaction().commit();
+            JOptionPane.showMessageDialog(null, "Se genero Arbol Binario");
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+            System.out.println("Ha ocurrido una excepción: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ha ocurrido una excepción: " + e.getMessage());
+        } finally {
+            //em.close(); // Esto depende de cómo estés gestionando tus EntityManagers
+            //emf.close();
+        }
+
+    }
 }
