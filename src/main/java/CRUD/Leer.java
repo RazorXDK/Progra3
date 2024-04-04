@@ -5,6 +5,7 @@
 package CRUD;
 
 import gt.edu.umg.db.Arbol;
+import gt.edu.umg.db.ArbolJpaController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -24,7 +25,7 @@ public class Leer {
         this.emf = emf;
     }
 
-    /**public void LeerArbol(int id, int estado, int dato) throws Exception {
+    public void LeerArbol(int id, int estado, int dato) throws Exception {
 
         List<Arbol> lstArbol = new ArrayList<>();
         ArbolJpaController cs = new ArbolJpaController(emf);
@@ -47,9 +48,5 @@ public class Leer {
             }
         }
     }
-   catch (Exception e) {
-            // Handle the exception
-            System.out.println("A ocurrido una excepcion: " + e.getMessage());
-
-    }*/
+   
 }
