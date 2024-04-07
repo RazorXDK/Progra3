@@ -43,7 +43,7 @@ public class CrearBd {
         System.out.println("Registros de la tabla 'arbol' eliminados.");
 
         // Consulta SQL para reiniciar la secuencia del contador de identidad
-        sql = "ALTER SEQUENCE arbol_id_seq RESTART WITH 1";
+        //sql = "ALTER SEQUENCE arbol_id_seq RESTART WITH 1";
         // Ejecutar la consulta
         statement.executeUpdate(sql);
         System.out.println("El contador de identidad 'id' de la tabla 'arbol' ha sido reiniciado.");

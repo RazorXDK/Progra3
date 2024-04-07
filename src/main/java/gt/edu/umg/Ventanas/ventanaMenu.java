@@ -156,7 +156,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel9.setText("Opcion2 XX");
+        jLabel9.setText("Arbol AVL");
 
         Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/123.png"))); // NOI18N
 

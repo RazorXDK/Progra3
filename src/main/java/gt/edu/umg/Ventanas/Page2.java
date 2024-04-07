@@ -51,7 +51,7 @@ public class Page2 extends javax.swing.JPanel {
         Panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setText("Opcion 2 XX");
+        jLabel1.setText("ARBOLES AVL");
 
         Ico1.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\images\\guide.png"));
         Ico1.setText("Ico1");
