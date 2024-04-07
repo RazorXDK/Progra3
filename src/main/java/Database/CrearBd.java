@@ -45,6 +45,7 @@ public class CrearBd {
         // Consulta SQL para reiniciar la secuencia del contador de identidad
         //sql = "ALTER SEQUENCE arbol_id_seq RESTART WITH 1";
         //desactivar la funcion de reiniciar el identity
+        
         // Ejecutar la consulta
         statement.executeUpdate(sql);
         System.out.println("El contador de identidad 'id' de la tabla 'arbol' ha sido reiniciado.");
