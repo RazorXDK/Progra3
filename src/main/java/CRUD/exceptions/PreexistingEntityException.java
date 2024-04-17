@@ -1,4 +1,4 @@
-package gt.edu.umg.db.exceptions;
+package CRUD.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

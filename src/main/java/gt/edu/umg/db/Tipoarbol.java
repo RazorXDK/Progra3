@@ -5,16 +5,16 @@
 package gt.edu.umg.db;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,46 +22,45 @@ import javax.persistence.Table;
  * @author LENOVO
  */
 @Entity
-@Table(name = "arbol", catalog = "postgres", schema = "POSTGRES")
+@Table(name = "tipoarbol", catalog = "postgres", schema = "POSTGRES")
 @NamedQueries({
-    @NamedQuery(name = "Arbol.findAll", query = "SELECT a FROM Arbol a")})
-public class Arbol implements Serializable {
+    @NamedQuery(name = "Tipoarbol.findAll", query = "SELECT t FROM Tipoarbol t")})
+public class Tipoarbol implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-    @Column(name = "dato")
-    private Integer dato;
+    @Column(name = "idtipoarbol", nullable = false)
+    private Integer idtipoarbol;
+    @Column(name = "nombre", length = 50)
+    private String nombre;
     @Column(name = "estado")
     private Integer estado;
-    @JoinColumn(name = "idtipoarbol", referencedColumnName = "idtipoarbol")
-    @ManyToOne
-    private Tipoarbol idtipoarbol;
+    @OneToMany(mappedBy = "idtipoarbol")
+    private List<Arbol> arbolList;
 
-    public Arbol() {
+    public Tipoarbol() {
     }
 
-    public Arbol(Integer id) {
-        this.id = id;
+    public Tipoarbol(Integer idtipoarbol) {
+        this.idtipoarbol = idtipoarbol;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdtipoarbol() {
+        return idtipoarbol;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdtipoarbol(Integer idtipoarbol) {
+        this.idtipoarbol = idtipoarbol;
     }
 
-    public Integer getDato() {
-        return dato;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDato(Integer dato) {
-        this.dato = dato;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Integer getEstado() {
@@ -72,29 +71,29 @@ public class Arbol implements Serializable {
         this.estado = estado;
     }
 
-    public Tipoarbol getIdtipoarbol() {
-        return idtipoarbol;
+    public List<Arbol> getArbolList() {
+        return arbolList;
     }
 
-    public void setIdtipoarbol(Tipoarbol idtipoarbol) {
-        this.idtipoarbol = idtipoarbol;
+    public void setArbolList(List<Arbol> arbolList) {
+        this.arbolList = arbolList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idtipoarbol != null ? idtipoarbol.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Arbol)) {
+        if (!(object instanceof Tipoarbol)) {
             return false;
         }
-        Arbol other = (Arbol) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        Tipoarbol other = (Tipoarbol) object;
+        if ((this.idtipoarbol == null && other.idtipoarbol != null) || (this.idtipoarbol != null && !this.idtipoarbol.equals(other.idtipoarbol))) {
             return false;
         }
         return true;
@@ -102,7 +101,7 @@ public class Arbol implements Serializable {
 
     @Override
     public String toString() {
-        return "gt.edu.umg.db.Arbol[ id=" + id + " ]";
+        return "gt.edu.umg.db.Tipoarbol[ idtipoarbol=" + idtipoarbol + " ]";
     }
     
 }

@@ -3,6 +3,7 @@
   <persistence-unit name="gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>gt.edu.umg.db.Arbol</class>
+    <class>gt.edu.umg.db.Tipoarbol</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

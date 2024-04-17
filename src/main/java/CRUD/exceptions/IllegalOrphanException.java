@@ -1,4 +1,4 @@
-package gt.edu.umg.db.exceptions;
+package CRUD.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

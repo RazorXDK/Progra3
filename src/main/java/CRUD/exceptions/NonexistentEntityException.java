@@ -1,4 +1,4 @@
-package gt.edu.umg.db.exceptions;
+package CRUD.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {

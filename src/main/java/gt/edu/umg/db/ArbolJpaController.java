@@ -4,19 +4,21 @@
  */
 package gt.edu.umg.db;
 
-import gt.edu.umg.db.exceptions.NonexistentEntityException;
+import CRUD.exceptions.NonexistentEntityException;
+import gt.edu.umg.db.Arbol;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import gt.edu.umg.db.Tipoarbol;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author rober
+ * @author LENOVO
  */
 public class ArbolJpaController implements Serializable {
 
@@ -34,7 +36,16 @@ public class ArbolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Tipoarbol idtipoarbol = arbol.getIdtipoarbol();
+            if (idtipoarbol != null) {
+                idtipoarbol = em.getReference(idtipoarbol.getClass(), idtipoarbol.getIdtipoarbol());
+                arbol.setIdtipoarbol(idtipoarbol);
+            }
             em.persist(arbol);
+            if (idtipoarbol != null) {
+                idtipoarbol.getArbolList().add(arbol);
+                idtipoarbol = em.merge(idtipoarbol);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -48,7 +59,22 @@ public class ArbolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Arbol persistentArbol = em.find(Arbol.class, arbol.getId());
+            Tipoarbol idtipoarbolOld = persistentArbol.getIdtipoarbol();
+            Tipoarbol idtipoarbolNew = arbol.getIdtipoarbol();
+            if (idtipoarbolNew != null) {
+                idtipoarbolNew = em.getReference(idtipoarbolNew.getClass(), idtipoarbolNew.getIdtipoarbol());
+                arbol.setIdtipoarbol(idtipoarbolNew);
+            }
             arbol = em.merge(arbol);
+            if (idtipoarbolOld != null && !idtipoarbolOld.equals(idtipoarbolNew)) {
+                idtipoarbolOld.getArbolList().remove(arbol);
+                idtipoarbolOld = em.merge(idtipoarbolOld);
+            }
+            if (idtipoarbolNew != null && !idtipoarbolNew.equals(idtipoarbolOld)) {
+                idtipoarbolNew.getArbolList().add(arbol);
+                idtipoarbolNew = em.merge(idtipoarbolNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -77,6 +103,11 @@ public class ArbolJpaController implements Serializable {
                 arbol.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The arbol with id " + id + " no longer exists.", enfe);
+            }
+            Tipoarbol idtipoarbol = arbol.getIdtipoarbol();
+            if (idtipoarbol != null) {
+                idtipoarbol.getArbolList().remove(arbol);
+                idtipoarbol = em.merge(idtipoarbol);
             }
             em.remove(arbol);
             em.getTransaction().commit();

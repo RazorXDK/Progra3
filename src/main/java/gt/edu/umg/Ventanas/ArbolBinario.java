@@ -438,7 +438,7 @@ public class ArbolBinario extends javax.swing.JPanel {
         // Verificar si el usuario seleccionó un archivo
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             CrearBd crearBd = new CrearBd();
-            crearBd.comprobarTablaArbol();
+            crearBd.crearTablaArbol();
             // Obtener el archivo seleccionado
             File selectedFile = fileChooser.getSelectedFile();
 
