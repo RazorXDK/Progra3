@@ -118,7 +118,7 @@ public class Page3 extends javax.swing.JPanel {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(357, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +150,7 @@ public class Page3 extends javax.swing.JPanel {
             .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 480));
+        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 480));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseClicked

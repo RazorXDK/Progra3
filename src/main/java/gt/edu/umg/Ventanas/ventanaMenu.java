@@ -23,6 +23,9 @@ public class ventanaMenu extends javax.swing.JFrame {
      */
     
     int xMouse, yMouse;
+    
+    int ventaH = 660;
+    int ventaV = 480;
     public ventanaMenu() {
         initComponents();
       
@@ -32,7 +35,7 @@ public class ventanaMenu extends javax.swing.JFrame {
          content.setBackground(new Color(239,244,249));
          
             Home pl = new Home();
-        pl.setSize(560, 480);
+        pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
         content.removeAll();
@@ -79,7 +82,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         InfoB = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         Ico6 = new javax.swing.JLabel();
         Ico5 = new javax.swing.JLabel();
         Ico7 = new javax.swing.JLabel();
@@ -90,10 +93,12 @@ public class ventanaMenu extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
+        setSize(new java.awt.Dimension(720, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Background.setBackground(new java.awt.Color(239, 244, 249));
         Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        Background.setPreferredSize(new java.awt.Dimension(720, 720));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 8)); // NOI18N
@@ -259,7 +264,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel1.setText("Entregable 1");
+        jLabel1.setText("Entregable 2");
 
         Home.setBackground(new java.awt.Color(250, 252, 253));
         Home.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -357,18 +362,18 @@ public class ventanaMenu extends javax.swing.JFrame {
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(850, Short.MAX_VALUE)
+                .addContainerGap(1006, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        Background.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 880, 40));
+        Background.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 40));
 
         SizeY.setBackground(new java.awt.Color(239, 244, 249));
 
@@ -391,14 +396,14 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 580, 480));
+        Background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 660, 480));
 
         Info.setBackground(new java.awt.Color(250, 252, 253));
         Info.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -424,23 +429,22 @@ public class ventanaMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel4.setText("Informacion");
+        jLabel11.setText("Informacion");
 
         javax.swing.GroupLayout InfoBLayout = new javax.swing.GroupLayout(InfoB);
         InfoB.setLayout(InfoBLayout);
         InfoBLayout.setHorizontalGroup(
             InfoBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoBLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoBLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(26, 26, 26))
         );
         InfoBLayout.setVerticalGroup(
             InfoBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InfoBLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -500,14 +504,14 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel8.setText("Curso");
         Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 590));
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void InfoBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InfoBMouseClicked
         Page1 pl = new Page1();
-        pl.setSize(430, 480);
+        pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
         content.removeAll();
@@ -553,7 +557,7 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void buttonArbolesBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonArbolesBMouseClicked
         ArbolBinario pl = new ArbolBinario();
-        pl.setSize(430, 480);
+        pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
         content.removeAll();
@@ -585,7 +589,7 @@ public class ventanaMenu extends javax.swing.JFrame {
     private void buton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton2MouseClicked
         // TODO add your handling code here:
         Page2 pl = new Page2();
-        pl.setSize(430, 480);
+        pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
         content.removeAll();
@@ -613,7 +617,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         
         
         Page3 pl = new Page3();
-        pl.setSize(430, 480);
+        pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
         content.removeAll();
@@ -723,12 +727,12 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
