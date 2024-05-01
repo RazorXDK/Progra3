@@ -9,5 +9,14 @@ package gt.edu.umg.arbolBB;
  * @author Bryan
  */
 public class NodoArbolAVL {
+   int dato,fe;
+    NodoArbolAVL izq;
+    NodoArbolAVL der;
+   public NodoArbolAVL(int d){
+       this.dato=d;
+       this.fe=0;
+       this.izq=null;
+       this.der=null;
+   }
     
 }
