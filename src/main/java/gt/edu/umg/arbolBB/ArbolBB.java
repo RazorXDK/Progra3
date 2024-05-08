@@ -132,8 +132,8 @@ public class ArbolBB {
         altura(raiz, 1);
         return alt;
     }
-    
-     public JPanel getdibujo() {
+
+    public JPanel getdibujo() {
         return new ArbolExpresionGrafico(this);
     }
      

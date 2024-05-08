@@ -103,7 +103,7 @@ public class ventanaMenu extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 8)); // NOI18N
         jLabel13.setText("V 1.0");
-        Background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, -1, -1));
+        Background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 540, -1, -1));
 
         menu.setBackground(new java.awt.Color(250, 252, 253));
         menu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
@@ -362,7 +362,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(1006, Short.MAX_VALUE)
+                .addContainerGap(996, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(20, 20, 20))
         );
@@ -373,7 +373,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        Background.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 40));
+        Background.add(Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1040, 40));
 
         SizeY.setBackground(new java.awt.Color(239, 244, 249));
 

@@ -3,6 +3,7 @@ package gt.edu.umg.arbolBB;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 public class SimuladorArbolBinario {
 
     ArbolBB miArbol = new ArbolBB();
+    ArbolAVL miArbolAVL = new ArbolAVL();
 
     public SimuladorArbolBinario() {
     }
@@ -19,6 +21,9 @@ public class SimuladorArbolBinario {
     public boolean insertar(Integer dato) {
         return (this.miArbol.agregar(dato));
     }
+    
+    
+    
     //metodo para mostrar los recorridos del arbol
     public String preOrden() {
         LinkedList it = this.miArbol.preOrden();
@@ -52,12 +57,15 @@ public class SimuladorArbolBinario {
         boolean siEsta = this.miArbol.existe(dato);
         String r = "El dato:" + dato.toString() + "\n";
         r += siEsta ? "Si se encuentra en el arbol" : "No se encuentra en el arbol";
+      
         return (r);
     }
 
     public JPanel getDibujo() {
         return this.miArbol.getdibujo();
     }
+    
+    
     
     public void vaciarA(){
     miArbol.vaciar();

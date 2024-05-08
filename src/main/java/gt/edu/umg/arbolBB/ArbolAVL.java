@@ -4,6 +4,9 @@
  */
 package gt.edu.umg.arbolBB;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Bryan
@@ -138,6 +141,22 @@ public class ArbolAVL {
             raiz = insertarAVL(nuevo, raiz);
         }
     }
+    
+    public List<Integer> obtenerElementos() {
+        List<Integer> elementos = new ArrayList<>();
+        obtenerElementosEnOrden(raiz, elementos);
+        return elementos;
+    }
+
+    // Función auxiliar para realizar un recorrido en orden (inorden) y obtener los elementos del árbol
+    private void obtenerElementosEnOrden(NodoArbolAVL nodo, List<Integer> elementos) {
+        if (nodo != null) {
+            obtenerElementosEnOrden(nodo.izq, elementos);
+            elementos.add(nodo.dato);
+            obtenerElementosEnOrden(nodo.der, elementos);
+        }
+    }
+    
     
   
 }

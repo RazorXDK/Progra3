@@ -1,8 +1,9 @@
-package gt.edu.umg.arbolBB;
+
 /**
  *
  * @author Razor
  */
+import gt.edu.umg.arbolBB.*;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -12,7 +13,7 @@ public class PanelFondo extends javax.swing.JPanel {
     private String ruta;
 
     public PanelFondo() {
-        initComponents();
+        //initComponents();
         this.setSize(933, 690);
         this.ruta = "";
 
