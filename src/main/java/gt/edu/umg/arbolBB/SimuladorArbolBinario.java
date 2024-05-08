@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class SimuladorArbolBinario {
 
     ArbolBB miArbol = new ArbolBB();
-    ArbolAVL miArbolAVL = new ArbolAVL();
+   
 
     public SimuladorArbolBinario() {
     }

@@ -4,36 +4,40 @@
  */
 package gt.edu.umg.arbolBB;
 
+import gt.edu.umg.Ventanas.Page2;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Bryan
  */
 public class ArbolAVL {
-
+    
     private NodoArbolAVL raiz;
-
+    
     public ArbolAVL() {
         raiz = null;
     }
+    
+   
 
     //Buscar nodo
     public NodoArbolAVL buscar(int d, NodoArbolAVL r) {
         if (raiz == null) {
             return null;
-
+            
         } else if (r.dato == d) {
             return r;
-
+            
         } else if (r.dato < d) {
             return buscar(d, r.der);
         } else {
             return buscar(d, r.izq);
         }
     }
-
+    
     ;
     
     //Metodo para obtener el factor de equilibrio
@@ -45,7 +49,7 @@ public class ArbolAVL {
             return x.fe;
         }
     }
-
+    
     ;
     
     //Rotacion simple izquierda
@@ -96,14 +100,14 @@ public class ArbolAVL {
                 if ((obtenerFE(subArb.izq) - obtenerFE(subArb.der) == 2)) {
                     if (nuevo.dato < subArb.izq.dato) {
                         nuevoP = rotacionIzquierda(subArb);
-
+                        
                     } else {
                         nuevoP = rotacionDobleIzquierda(subArb);
                     }
                 }
-
+                
             }
-
+            
         } else if (nuevo.dato > subArb.dato) {
             if (subArb.der == null) {
                 subArb.der = nuevo;
@@ -142,21 +146,28 @@ public class ArbolAVL {
         }
     }
     
-    public List<Integer> obtenerElementos() {
-        List<Integer> elementos = new ArrayList<>();
-        obtenerElementosEnOrden(raiz, elementos);
-        return elementos;
+    public List<Integer> preOrdenEnVector() {
+        List<Integer> preOrden = new ArrayList<>();
+        preOrdenEnVector(raiz, preOrden);
+        return preOrden;
     }
 
-    // Función auxiliar para realizar un recorrido en orden (inorden) y obtener los elementos del árbol
-    private void obtenerElementosEnOrden(NodoArbolAVL nodo, List<Integer> elementos) {
+    // Función auxiliar para realizar un recorrido en preorden y almacenar los datos en un vector
+    private void preOrdenEnVector(NodoArbolAVL nodo, List<Integer> preOrden) {
         if (nodo != null) {
-            obtenerElementosEnOrden(nodo.izq, elementos);
-            elementos.add(nodo.dato);
-            obtenerElementosEnOrden(nodo.der, elementos);
+            preOrden.add(nodo.dato); // Agrega el dato del nodo actual al vector
+            preOrdenEnVector(nodo.izq, preOrden); // Recorre el subárbol izquierdo
+            preOrdenEnVector(nodo.der, preOrden); // Recorre el subárbol derecho
         }
     }
     
+  public int[] obtenerRecorridoPreOrden() {
+        List<Integer> preOrden = preOrdenEnVector();
+        int[] vectorPreOrden = new int[preOrden.size()];
+        for (int i = 0; i < preOrden.size(); i++) {
+            vectorPreOrden[i] = preOrden.get(i);
+        }
+        return vectorPreOrden;
+    }
     
-  
 }

@@ -5,6 +5,7 @@
 package gt.edu.umg.Ventanas;
 
 import gt.edu.umg.Ventanas.*;
+import gt.edu.umg.arbolBB.ArbolAVL;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -42,6 +43,9 @@ public class Page2 extends javax.swing.JPanel {
     public void complementos() {
         this.repintarArbol();
     }
+
+     ArbolAVL avl = new ArbolAVL();
+  
 
     private void repintarArbol() {
         this.jDesktopPane1.removeAll();
@@ -322,9 +326,9 @@ public class Page2 extends javax.swing.JPanel {
 
     private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
         // TODO add your handling code here:
-         String recorrido = null;
+        String recorrido = null;
         recorrido = this.simulador.preOrden();
-        
+
         this.impresion.setText("");
         this.impresion.setText(recorrido);
     }//GEN-LAST:event_PreOrdenActionPerformed
@@ -365,33 +369,57 @@ public class Page2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         String recorrido = null;
         recorrido = this.simulador.postOrden();
-        
+
         this.impresion.setText("");
         this.impresion.setText(recorrido);
     }//GEN-LAST:event_PostOrdenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int arbol[]= {20,25,30,24,10,12,9};
-        for(int a =0;a<arbol.length;a++){
-            
-            
-            try {
+        ArbolAVL avl = new ArbolAVL();
+
+        int arbol[] = {1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15};
+        for (int a = 0; a < arbol.length; a++) {
+
+            avl.insertar(arbol[a]);
+
+            /*   try {
             
             if (this.simulador.insertar(arbol[a])) {
-                //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
-                this.inicializar(true);
-                
-                complementos();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
-
-        }
+            //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
+            this.inicializar(true);
             
+            complementos();
+            }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
+            
+            }*/
         }
         
         
+        int aux[]=avl.obtenerRecorridoPreOrden();
+         for (int a = 0; a < aux.length; a++) {
+
+           
+
+            try {
+            
+            if (this.simulador.insertar(aux[a])) {
+            //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
+            this.inicializar(true);
+            
+            complementos();
+            }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
+            
+            }
+        }
+        
+        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
