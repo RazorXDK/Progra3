@@ -4,22 +4,23 @@
  */
 package gt.edu.umg.Ventanas;
 
-import gt.edu.umg.Ventanas.*;
 import gt.edu.umg.arbolBB.ArbolAVL;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
  * @author rober
  */
 public class Page2 extends javax.swing.JPanel {
+
+    ArrayList<Integer> arbolmax = new ArrayList<>();
 
     private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
 
@@ -44,8 +45,7 @@ public class Page2 extends javax.swing.JPanel {
         this.repintarArbol();
     }
 
-     ArbolAVL avl = new ArbolAVL();
-  
+    ArbolAVL avl = new ArbolAVL();
 
     private void repintarArbol() {
         this.jDesktopPane1.removeAll();
@@ -296,32 +296,43 @@ public class Page2 extends javax.swing.JPanel {
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         // TODO add your handling code here:
-        try {
-            int dato = Integer.parseInt(txtdato.getText());
+        ArbolAVL avl = new ArbolAVL();
+        simulador.vaciarA();
+       
+        arbolmax.add(Integer.valueOf(txtdato.getText()));
 
-            // Llamar a la función buscar para verificar si el dato ya está en el árbol
-            String resultadoBusqueda = simulador.buscar(dato);
-            boolean existe = resultadoBusqueda.contains("Si se encuentra");
+        for (int a = 0; a < arbolmax.size(); a++) {
 
-            if (existe) {
-                JOptionPane.showMessageDialog(null, "El dato ya está en el árbol", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Insertar el valor en el árbol
-                if (this.simulador.insertar(dato)) {
-                    // Valor insertado correctamente
-                    //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    txtdato.setText("");
-                    this.inicializar(true);
-                    complementos();
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor ingresa un número válido", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
+            avl.insertar(arbolmax.get(a));
+             txtdato.setText("");
+
         }
+
+        int aux[] = avl.obtenerRecorridoPreOrden();
+        for (int a = 0; a < aux.length; a++) {
+
+            try {
+
+                if (this.simulador.insertar(aux[a])) {
+                    //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
+                    this.inicializar(true);
+
+                    //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente" + aux[a], " ...", 1);
+                    complementos();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
+
+            }
+        }
+        
+        String recorrido = null;
+        recorrido = this.simulador.inOrden();
+
+        this.impresion.setText("");
+        this.impresion.setText(recorrido);
+
+
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
@@ -377,8 +388,9 @@ public class Page2 extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ArbolAVL avl = new ArbolAVL();
+         simulador.vaciarA();
 
-        int arbol[] = {1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15};
+        int arbol[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
         for (int a = 0; a < arbol.length; a++) {
 
             avl.insertar(arbol[a]);
@@ -396,28 +408,23 @@ public class Page2 extends javax.swing.JPanel {
             
             }*/
         }
-        
-        
-        int aux[]=avl.obtenerRecorridoPreOrden();
-         for (int a = 0; a < aux.length; a++) {
 
-           
+        int aux[] = avl.obtenerRecorridoPreOrden();
+        for (int a = 0; a < aux.length; a++) {
 
             try {
-            
-            if (this.simulador.insertar(aux[a])) {
-            //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
-            this.inicializar(true);
-            
-            complementos();
-            }
+
+                if (this.simulador.insertar(aux[a])) {
+                    //JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
+                    this.inicializar(true);
+
+                    complementos();
+                }
             } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
-            
+                JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
+
             }
         }
-        
-        
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -426,6 +433,7 @@ public class Page2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         simulador.vaciarA();
         complementos();
+        arbolmax.clear();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

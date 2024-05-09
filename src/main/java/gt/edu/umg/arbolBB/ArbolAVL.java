@@ -4,40 +4,36 @@
  */
 package gt.edu.umg.arbolBB;
 
-import gt.edu.umg.Ventanas.Page2;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Bryan
  */
 public class ArbolAVL {
-    
+
     private NodoArbolAVL raiz;
-    
+
     public ArbolAVL() {
         raiz = null;
     }
-    
-   
 
     //Buscar nodo
     public NodoArbolAVL buscar(int d, NodoArbolAVL r) {
         if (raiz == null) {
             return null;
-            
+
         } else if (r.dato == d) {
             return r;
-            
+
         } else if (r.dato < d) {
             return buscar(d, r.der);
         } else {
             return buscar(d, r.izq);
         }
     }
-    
+
     ;
     
     //Metodo para obtener el factor de equilibrio
@@ -49,7 +45,7 @@ public class ArbolAVL {
             return x.fe;
         }
     }
-    
+
     ;
     
     //Rotacion simple izquierda
@@ -100,14 +96,14 @@ public class ArbolAVL {
                 if ((obtenerFE(subArb.izq) - obtenerFE(subArb.der) == 2)) {
                     if (nuevo.dato < subArb.izq.dato) {
                         nuevoP = rotacionIzquierda(subArb);
-                        
+
                     } else {
                         nuevoP = rotacionDobleIzquierda(subArb);
                     }
                 }
-                
+
             }
-            
+
         } else if (nuevo.dato > subArb.dato) {
             if (subArb.der == null) {
                 subArb.der = nuevo;
@@ -145,7 +141,7 @@ public class ArbolAVL {
             raiz = insertarAVL(nuevo, raiz);
         }
     }
-    
+
     public List<Integer> preOrdenEnVector() {
         List<Integer> preOrden = new ArrayList<>();
         preOrdenEnVector(raiz, preOrden);
@@ -160,8 +156,8 @@ public class ArbolAVL {
             preOrdenEnVector(nodo.der, preOrden); // Recorre el subárbol derecho
         }
     }
-    
-  public int[] obtenerRecorridoPreOrden() {
+
+    public int[] obtenerRecorridoPreOrden() {
         List<Integer> preOrden = preOrdenEnVector();
         int[] vectorPreOrden = new int[preOrden.size()];
         for (int i = 0; i < preOrden.size(); i++) {
@@ -169,5 +165,5 @@ public class ArbolAVL {
         }
         return vectorPreOrden;
     }
-    
+
 }

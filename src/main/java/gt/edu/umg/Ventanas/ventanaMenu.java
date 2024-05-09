@@ -4,7 +4,6 @@
  */
 package gt.edu.umg.Ventanas;
 
-
 import gt.edu.umg.db.Arbol;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,20 +20,17 @@ public class ventanaMenu extends javax.swing.JFrame {
     /**
      * Creates new form ventanaMenu
      */
-    
     int xMouse, yMouse;
-    
+
     int ventaH = 660;
     int ventaV = 480;
+
     public ventanaMenu() {
         initComponents();
-      
-        
-       
-        
-         content.setBackground(new Color(239,244,249));
-         
-            Home pl = new Home();
+
+        content.setBackground(new Color(239, 244, 249));
+
+        Home pl = new Home();
         pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
 
@@ -42,7 +38,6 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.add(pl, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-         
 
     }
 
@@ -88,6 +83,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         Ico7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -504,6 +500,9 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel8.setText("Curso");
         Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Background.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
+
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 640));
 
         pack();
@@ -523,12 +522,12 @@ public class ventanaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_InfoBMouseClicked
 
     private void InfoBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InfoBMouseEntered
-     InfoB.setBackground(new Color(194,231,255));   // TODO add your handling code here:
+        InfoB.setBackground(new Color(194, 231, 255));   // TODO add your handling code here:
     }//GEN-LAST:event_InfoBMouseEntered
 
     private void InfoBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InfoBMouseExited
-       InfoB.setBackground(new Color(250,252,253));
- // TODO add your handling code here:
+        InfoB.setBackground(new Color(250, 252, 253));
+        // TODO add your handling code here:
     }//GEN-LAST:event_InfoBMouseExited
 
     private void buton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton3MouseExited
@@ -564,21 +563,19 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.add(pl, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-        
-       
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonArbolesBMouseClicked
 
     private void buton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseEntered
         // TODO add your handling code here:
-        buton4.setBackground(new Color(194,231,255));
+        buton4.setBackground(new Color(194, 231, 255));
     }//GEN-LAST:event_buton4MouseEntered
 
     private void buton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseExited
         // TODO add your handling code here:
-        buton4.setBackground(new Color(250,252,253));
-        
+        buton4.setBackground(new Color(250, 252, 253));
+
     }//GEN-LAST:event_buton4MouseExited
 
     private void buton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton4MouseClicked
@@ -596,26 +593,13 @@ public class ventanaMenu extends javax.swing.JFrame {
         content.add(pl, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-        
-        
-       
-        
-        
-        
+
+
     }//GEN-LAST:event_buton2MouseClicked
 
     private void buton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton3MouseClicked
         // TODO add your handling code here:
-          
 
-       
-        
-        
-        
-        
-        
-        
-        
         Page3 pl = new Page3();
         pl.setSize(ventaH, ventaV);
         pl.setLocation(0, 0);
@@ -628,15 +612,15 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void HeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMousePressed
         // TODO add your handling code here:
-        xMouse =evt.getX();
-        yMouse=evt.getY();
+        xMouse = evt.getX();
+        yMouse = evt.getY();
     }//GEN-LAST:event_HeaderMousePressed
 
     private void HeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeaderMouseDragged
         // TODO add your handling code here:
-        int x=evt.getXOnScreen();
-        int y=evt.getYOnScreen();
-        this.setLocation(x-xMouse, y-yMouse);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_HeaderMouseDragged
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -646,7 +630,7 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
         // TODO add your handling code here:
-          Home pl = new Home();
+        Home pl = new Home();
         pl.setSize(560, 480);
         pl.setLocation(0, 0);
 
@@ -658,15 +642,15 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     private void HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseEntered
         // TODO add your handling code here:
-           
-        Home.setBackground(new Color(194,231,255));
-       
+
+        Home.setBackground(new Color(194, 231, 255));
+
     }//GEN-LAST:event_HomeMouseEntered
 
     private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
         // TODO add your handling code here:
-          Home.setBackground(new Color(250,252,253));
-       
+        Home.setBackground(new Color(250, 252, 253));
+
     }//GEN-LAST:event_HomeMouseExited
 
     /**
@@ -725,6 +709,7 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel buton4;
     private javax.swing.JPanel buttonArbolesB;
     private javax.swing.JPanel content;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
