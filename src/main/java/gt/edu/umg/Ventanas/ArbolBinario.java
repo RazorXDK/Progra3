@@ -8,6 +8,7 @@ import CRUD.Actualizar;
 import CRUD.Crear;
 import CRUD.Eliminar;
 import Database.CrearBd;
+import static Database.CrearBd.crearBaseDeDatos;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
 import gt.edu.umg.arbolBB.Vistaa;
 import gt.edu.umg.db.Arbol;
@@ -114,7 +115,7 @@ public class ArbolBinario extends javax.swing.JPanel {
                         //crearArbol(a); // Convertir el dato a entero y enviarlo al método crearArbol
 
                         Crear cre = new Crear(em, emf);
-                        cre.crearArbol(a);
+                        cre.crearTipoArbol("Arbol Binario");
 
                     }
                 }
@@ -446,7 +447,7 @@ public class ArbolBinario extends javax.swing.JPanel {
         // Verificar si el usuario seleccionó un archivo
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             CrearBd crearBd = new CrearBd();
-            crearBd.crearTablaArbol();
+            crearBd.crearBaseDeDatos();
             // Obtener el archivo seleccionado
             File selectedFile = fileChooser.getSelectedFile();
 

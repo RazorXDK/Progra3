@@ -165,5 +165,14 @@ public class ArbolAVL {
         }
         return vectorPreOrden;
     }
+    
+    
+    public void avlVaciar(){
+        raiz=null;
+    }
+    
+
+    
+    
 
 }

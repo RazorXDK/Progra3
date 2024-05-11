@@ -4,21 +4,19 @@
  */
 package gt.edu.umg.db;
 
-import CRUD.exceptions.NonexistentEntityException;
-import gt.edu.umg.db.Arbol;
+import gt.edu.umg.db.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import gt.edu.umg.db.Tipoarbol;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author LENOVO
+ * @author rober
  */
 public class ArbolJpaController implements Serializable {
 
@@ -36,15 +34,15 @@ public class ArbolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Tipoarbol idtipoarbol = arbol.getIdtipoarbol();
-            if (idtipoarbol != null) {
-                idtipoarbol = em.getReference(idtipoarbol.getClass(), idtipoarbol.getIdtipoarbol());
-                arbol.setIdtipoarbol(idtipoarbol);
+            TipoArbol idTipoArbol = arbol.getIdTipoArbol();
+            if (idTipoArbol != null) {
+                idTipoArbol = em.getReference(idTipoArbol.getClass(), idTipoArbol.getIdTipoArbol());
+                arbol.setIdTipoArbol(idTipoArbol);
             }
             em.persist(arbol);
-            if (idtipoarbol != null) {
-                idtipoarbol.getArbolList().add(arbol);
-                idtipoarbol = em.merge(idtipoarbol);
+            if (idTipoArbol != null) {
+                idTipoArbol.getArbolList().add(arbol);
+                idTipoArbol = em.merge(idTipoArbol);
             }
             em.getTransaction().commit();
         } finally {
@@ -60,20 +58,20 @@ public class ArbolJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Arbol persistentArbol = em.find(Arbol.class, arbol.getId());
-            Tipoarbol idtipoarbolOld = persistentArbol.getIdtipoarbol();
-            Tipoarbol idtipoarbolNew = arbol.getIdtipoarbol();
-            if (idtipoarbolNew != null) {
-                idtipoarbolNew = em.getReference(idtipoarbolNew.getClass(), idtipoarbolNew.getIdtipoarbol());
-                arbol.setIdtipoarbol(idtipoarbolNew);
+            TipoArbol idTipoArbolOld = persistentArbol.getIdTipoArbol();
+            TipoArbol idTipoArbolNew = arbol.getIdTipoArbol();
+            if (idTipoArbolNew != null) {
+                idTipoArbolNew = em.getReference(idTipoArbolNew.getClass(), idTipoArbolNew.getIdTipoArbol());
+                arbol.setIdTipoArbol(idTipoArbolNew);
             }
             arbol = em.merge(arbol);
-            if (idtipoarbolOld != null && !idtipoarbolOld.equals(idtipoarbolNew)) {
-                idtipoarbolOld.getArbolList().remove(arbol);
-                idtipoarbolOld = em.merge(idtipoarbolOld);
+            if (idTipoArbolOld != null && !idTipoArbolOld.equals(idTipoArbolNew)) {
+                idTipoArbolOld.getArbolList().remove(arbol);
+                idTipoArbolOld = em.merge(idTipoArbolOld);
             }
-            if (idtipoarbolNew != null && !idtipoarbolNew.equals(idtipoarbolOld)) {
-                idtipoarbolNew.getArbolList().add(arbol);
-                idtipoarbolNew = em.merge(idtipoarbolNew);
+            if (idTipoArbolNew != null && !idTipoArbolNew.equals(idTipoArbolOld)) {
+                idTipoArbolNew.getArbolList().add(arbol);
+                idTipoArbolNew = em.merge(idTipoArbolNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -104,10 +102,10 @@ public class ArbolJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The arbol with id " + id + " no longer exists.", enfe);
             }
-            Tipoarbol idtipoarbol = arbol.getIdtipoarbol();
-            if (idtipoarbol != null) {
-                idtipoarbol.getArbolList().remove(arbol);
-                idtipoarbol = em.merge(idtipoarbol);
+            TipoArbol idTipoArbol = arbol.getIdTipoArbol();
+            if (idTipoArbol != null) {
+                idTipoArbol.getArbolList().remove(arbol);
+                idTipoArbol = em.merge(idTipoArbol);
             }
             em.remove(arbol);
             em.getTransaction().commit();

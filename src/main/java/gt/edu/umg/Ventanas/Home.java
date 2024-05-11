@@ -36,12 +36,6 @@ public class Home extends javax.swing.JPanel {
         content = new javax.swing.JPanel();
         Panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Buton = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(250, 252, 253));
@@ -56,76 +50,6 @@ public class Home extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Novedades");
 
-        Buton.setBackground(new java.awt.Color(250, 252, 253));
-        Buton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        Buton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ButonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ButonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ButonMouseExited(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel8.setText("Cerrar");
-
-        javax.swing.GroupLayout ButonLayout = new javax.swing.GroupLayout(Buton);
-        Buton.setLayout(ButonLayout);
-        ButonLayout.setHorizontalGroup(
-            ButonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButonLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        ButonLayout.setVerticalGroup(
-            ButonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel3.setBackground(new java.awt.Color(239, 244, 249));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), "GUI Forms"));
-
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel11.setText("Interfaz Grafica");
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel5.setText("Java Swing");
-        jLabel5.setToolTipText("");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Amarillo.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addContainerGap())
-        );
-
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel7.setText("Grupo 2 Programacion 3");
 
@@ -134,36 +58,20 @@ public class Home extends javax.swing.JPanel {
         PanelLayout.setHorizontalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1))
-                    .addGroup(PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(208, 208, 208))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                        .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(Buton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addComponent(jLabel7)
+                .addGap(495, 495, 495))
         );
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -184,36 +92,11 @@ public class Home extends javax.swing.JPanel {
         add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 530));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseExited
-        // TODO add your handling code here:
-        Buton.setBackground(new Color(250,252,253));
-    }//GEN-LAST:event_ButonMouseExited
-
-    private void ButonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseEntered
-        // TODO add your handling code here:
-        Buton.setBackground(new Color(194,231,255));
-    }//GEN-LAST:event_ButonMouseEntered
-
-    private void ButonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButonMouseClicked
-        // TODO add your handling code here:
-        content.setBackground(new Color(239,244,249));
-        content.removeAll();
-
-        content.revalidate();
-        content.repaint();
-    }//GEN-LAST:event_ButonMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Buton;
     private javax.swing.JPanel Panel;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,25 +11,8 @@ public class CrearBd {
     static final String USER = "postgres";
     static final String PASSWORD = "123456";
 
-    
-    private void vaciarTablaArbol(Statement statement, Connection connection) throws SQLException {
-        // Consulta SQL para vaciar la tabla "arbol"
-        String sql = "DELETE FROM arbol";
-        // Ejecutar la consulta
-        statement.executeUpdate(sql);
-        System.out.println("Registros de la tabla 'arbol' eliminados.");
-
-        // Consulta SQL para reiniciar la secuencia del contador de identidad
-        //sql = "ALTER SEQUENCE arbol_id_seq RESTART WITH 1";
-        //desactivar la funcion de reiniciar el identity
-        
-        // Ejecutar la consulta
-        statement.executeUpdate(sql);
-        System.out.println("El contador de identidad 'id' de la tabla 'arbol' ha sido reiniciado.");
-    }
-
-    public void crearTablaArbol()  {
-         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
+    public static void crearBaseDeDatos() {
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             // Crear una declaración
             try (Statement statement = connection.createStatement()) {
                 // Verificar si la tabla TipoArbol existe
@@ -57,7 +35,6 @@ public class CrearBd {
                             + "id SERIAL PRIMARY KEY,"
                             + "idTipoArbol INTEGER,"
                             + "dato INTEGER,"
-                            + "estado INTEGER,"
                             + "CONSTRAINT fk_idTipoArbol FOREIGN KEY (idTipoArbol) REFERENCES TipoArbol(idTipoArbol)"
                             + ")";
                     // Ejecutar la consulta para crear la tabla "Arbol"
@@ -69,6 +46,7 @@ public class CrearBd {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
         }
     }
+
     public static boolean existeTabla(String nombreTabla, Connection connection) throws SQLException {
         boolean existe = false;
         try (Statement stmt = connection.createStatement()) {
@@ -85,11 +63,8 @@ public class CrearBd {
         }
         return existe;
     }
-    
 
-
-    public static void main(String[] args)  {
-        CrearBd crearBd = new CrearBd();
-        crearBd.crearTablaArbol();
+    public static void main(String[] args) {
+        crearBaseDeDatos();
     }
 }

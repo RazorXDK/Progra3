@@ -5,7 +5,6 @@
  */
 package gt.edu.umg.arbolBB;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JPanel;
 
@@ -140,4 +139,10 @@ public class ArbolBB {
      public void vaciar() {
         raiz = null; // Asignar null a la raíz hace que todos los nodos sean eliminados por el recolector de basura
     }
+     
+     
+         public boolean estaVacio() {
+    return raiz == null;
+}
+     
 }

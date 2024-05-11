@@ -4,12 +4,8 @@
  */
 package gt.edu.umg.Ventanas;
 
-import gt.edu.umg.db.Arbol;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -69,6 +65,9 @@ public class ventanaMenu extends javax.swing.JFrame {
         Home = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         Ico9 = new javax.swing.JLabel();
+        Home2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        Ico11 = new javax.swing.JLabel();
         Header = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         SizeY = new javax.swing.JPanel();
@@ -83,7 +82,6 @@ public class ventanaMenu extends javax.swing.JFrame {
         Ico7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -159,7 +157,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel9.setText("Arbol AVL");
 
-        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/123.png"))); // NOI18N
+        Ico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nodo.png"))); // NOI18N
 
         javax.swing.GroupLayout buton2Layout = new javax.swing.GroupLayout(buton2);
         buton2.setLayout(buton2Layout);
@@ -198,7 +196,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel10.setText("Opcion3 YY");
 
-        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/abc.png"))); // NOI18N
+        Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/terminal.png"))); // NOI18N
         Ico3.setToolTipText("");
 
         javax.swing.GroupLayout buton3Layout = new javax.swing.GroupLayout(buton3);
@@ -301,6 +299,45 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Home2.setBackground(new java.awt.Color(250, 252, 253));
+        Home2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Home2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Home2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Home2MouseExited(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel16.setText("PG4 Admin");
+
+        Ico11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/database.png"))); // NOI18N
+
+        javax.swing.GroupLayout Home2Layout = new javax.swing.GroupLayout(Home2);
+        Home2.setLayout(Home2Layout);
+        Home2Layout.setHorizontalGroup(
+            Home2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Home2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Ico11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
+        );
+        Home2Layout.setVerticalGroup(
+            Home2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Home2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Home2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(Ico11, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(menu);
         menu.setLayout(menuLayout);
         menuLayout.setHorizontalGroup(
@@ -314,15 +351,18 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Home2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Home2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(buttonArbolesB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -332,7 +372,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addComponent(buton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 250, 280));
+        Background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 250, 350));
 
         Header.setBackground(new java.awt.Color(239, 244, 249));
         Header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -490,7 +530,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Background.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 250, -1));
+        Background.add(Info, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 250, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel6.setText("PROGRAMACIÓN III - 12024-6691-022-A");
@@ -499,9 +539,6 @@ public class ventanaMenu extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel8.setText("Curso");
         Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Background.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
 
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 640));
 
@@ -653,6 +690,28 @@ public class ventanaMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_HomeMouseExited
 
+    private void Home2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home2MouseClicked
+        // TODO add your handling code here:
+                Page4 pl = new Page4();
+        pl.setSize(ventaH, ventaV);
+        pl.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(pl, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_Home2MouseClicked
+
+    private void Home2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home2MouseEntered
+        // TODO add your handling code here:
+        Home2.setBackground(new Color(194, 231, 255));
+    }//GEN-LAST:event_Home2MouseEntered
+
+    private void Home2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home2MouseExited
+        // TODO add your handling code here:
+         Home2.setBackground(new Color(250, 252, 253));
+    }//GEN-LAST:event_Home2MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -693,7 +752,9 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel Background;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel Home;
+    private javax.swing.JPanel Home2;
     private javax.swing.JLabel Ico1;
+    private javax.swing.JLabel Ico11;
     private javax.swing.JLabel Ico2;
     private javax.swing.JLabel Ico3;
     public javax.swing.JLabel Ico4;
@@ -709,13 +770,13 @@ public class ventanaMenu extends javax.swing.JFrame {
     private javax.swing.JPanel buton4;
     private javax.swing.JPanel buttonArbolesB;
     private javax.swing.JPanel content;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

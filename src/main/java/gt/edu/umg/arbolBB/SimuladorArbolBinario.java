@@ -70,5 +70,10 @@ public class SimuladorArbolBinario {
     public void vaciarA(){
     miArbol.vaciar();
 }
+    public boolean arbolEstaVacio() {
+    return miArbol.estaVacio();
+}
+    
+    
     
 }
