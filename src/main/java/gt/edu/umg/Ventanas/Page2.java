@@ -5,8 +5,11 @@
 package gt.edu.umg.Ventanas;
 
 import CRUD.Crear;
+import Database.CrearBd;
 import gt.edu.umg.arbolBB.ArbolAVL;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
+import gt.edu.umg.db.Tipoarbol;
+import gt.edu.umg.db.TipoarbolJpaController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -17,6 +20,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -31,6 +35,24 @@ public class Page2 extends javax.swing.JPanel {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("gt.edu.umg_Ventanas_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
+
+    private static int obtenerUltimoIdTipoArbol(EntityManager em) {
+        try {
+            // Consulta JPQL para obtener el máximo idTipoArbol
+            Query query = em.createQuery("SELECT MAX(t.idTipoArbol) FROM TipoArbol t");
+
+            // Obtener el resultado
+            Object result = query.getSingleResult();
+
+            // Verificar si se obtuvo un resultado
+            if (result != null) {
+                return (int) result;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Page2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1; // Devolver -1 si no se pudo obtener el último ID de TipoArbol
+    }
 
     private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
 
@@ -563,35 +585,48 @@ public class Page2 extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+        int aux = 0;
 
-        if (simulador.arbolEstaVacio()) {
-            System.out.println("El árbol está vacío.");
+        Crear cre = new Crear(em, emf);
+
+        try {
+            cre.tipoArbol("AVL");
+        } catch (Exception ex) {
+            Logger.getLogger(Page2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Lista para almacenar los registros de TipoArbol
+        List<Tipoarbol> lstTipoarbol = new ArrayList<>();
+
+        // Controlador JPA para la entidad TipoArbol
+        TipoarbolJpaController tipoArbolController = new TipoarbolJpaController(emf);
+
+        try {
+            // Leer todos los registros de la tabla TipoArbol
+            lstTipoarbol = tipoArbolController.findTipoarbolEntities();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //em.close(); // Cerrar el EntityManager si es necesario
+        }
+
+        // Verificar si la lista está vacía
+        if (lstTipoarbol.isEmpty()) {
+            System.out.println("La tabla TipoArbol no contiene registros.");
         } else {
-            System.out.println("El árbol no está vacío.");
-            String tipo = "Arbol AVL";
-            
-            Crear crear = new Crear(em, emf);
-            try {
-                crear.crearTipoArbol("Arbol AVL");
-            } catch (Exception ex) {
-                Logger.getLogger(Page2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            List<Integer> listaEnteros = new ArrayList<>();
-            
-            
-            
-            
-            
-            
-            try {
-                crear.crearTipoArbol(listaEnteros);
-            } catch (Exception ex) {
-                Logger.getLogger(Page2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            // Recorrer la lista de registros de TipoArbol
+            for (Tipoarbol tipoArbol : lstTipoarbol) {
+                aux = tipoArbol.getId();
 
+            }
+        }
+
+        for (int i = 0; i < arbolmax.size(); i++) {
+            try {
+                cre.crearArbol(arbolmax.get(i), aux);
+            } catch (Exception ex) {
+                Logger.getLogger(Page2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
 

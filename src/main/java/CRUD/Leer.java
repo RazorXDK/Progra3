@@ -42,11 +42,50 @@ public class Leer {
         } else {
             for (Arbol al : lstArbol) {
                 System.out.println("ID Arbol: " + al.getId());
-                System.out.println("Estado: " + al.getEstado());
+             
                 System.out.println("Dato " + al.getDato());
                 System.out.println("----------------------------------------------");
             }
         }
     }
+    
+    private int aux;
+
+    public void LeerTipo() throws Exception {
+
+        // Lista para almacenar los registros de Arbol
+        List<Arbol> lstArbol = new ArrayList<>();
+
+        // Controlador JPA para la entidad Arbol
+        ArbolJpaController cs = new ArbolJpaController(emf);
+
+        try {
+            // Leer todos los registros de la tabla Arbol
+            lstArbol = cs.findArbolEntities();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //em.close(); // Cerrar el EntityManager si es necesario
+        }
+
+        // Verificar si la lista está vacía
+        if (lstArbol.isEmpty()) {
+            System.out.println("La tabla Arbol no contiene registros.");
+        } else {
+            // Recorrer la lista de registros de Arbol
+            for (Arbol al : lstArbol) {
+                System.out.println("ID Arbol: " + al.getId());
+                System.out.println("Dato: " + al.getDato());
+                System.out.println("----------------------------------------------");
+                
+            }
+        }
+    }
+
+    // Método para actualizar la variable auxiliar con cada IDTipoArbol
+    public void actualizarAux(int idTipoArbol) {
+        aux = idTipoArbol;
+    }
+    
    
 }

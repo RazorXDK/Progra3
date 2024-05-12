@@ -5,12 +5,9 @@
 package gt.edu.umg.Ventanas;
 
 import CRUD.Actualizar;
-import CRUD.Crear;
 import CRUD.Eliminar;
 import Database.CrearBd;
-import static Database.CrearBd.crearBaseDeDatos;
 import gt.edu.umg.arbolBB.SimuladorArbolBinario;
-import gt.edu.umg.arbolBB.Vistaa;
 import gt.edu.umg.db.Arbol;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,7 +26,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -114,8 +110,8 @@ public class ArbolBinario extends javax.swing.JPanel {
                         int a = Integer.parseInt(dato);
                         //crearArbol(a); // Convertir el dato a entero y enviarlo al método crearArbol
 
-                        Crear cre = new Crear(em, emf);
-                        cre.crearTipoArbol("Arbol Binario");
+                        
+                       
 
                     }
                 }
@@ -447,7 +443,7 @@ public class ArbolBinario extends javax.swing.JPanel {
         // Verificar si el usuario seleccionó un archivo
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             CrearBd crearBd = new CrearBd();
-            crearBd.crearBaseDeDatos();
+            crearBd.comprobarTablaArbol();
             // Obtener el archivo seleccionado
             File selectedFile = fileChooser.getSelectedFile();
 

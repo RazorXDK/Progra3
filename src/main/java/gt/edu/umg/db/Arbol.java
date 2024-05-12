@@ -8,12 +8,9 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -23,7 +20,7 @@ import javax.persistence.Table;
  * @author rober
  */
 @Entity
-@Table(name = "Arbol", catalog = "dbProgra3", schema = "dbo")
+@Table(name = "arbol", catalog = "postgres", schema = "public")
 @NamedQueries({
     @NamedQuery(name = "Arbol.findAll", query = "SELECT a FROM Arbol a")})
 public class Arbol implements Serializable {
@@ -36,11 +33,8 @@ public class Arbol implements Serializable {
     private Integer id;
     @Column(name = "dato")
     private Integer dato;
-    @Column(name = "estado")
-    private Integer estado;
-    @JoinColumn(name = "idTipoArbol", referencedColumnName = "idTipoArbol")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private TipoArbol idTipoArbol;
+    @Column(name = "idtipoarbol")
+    private Integer idtipoarbol;
 
     public Arbol() {
     }
@@ -65,20 +59,12 @@ public class Arbol implements Serializable {
         this.dato = dato;
     }
 
-    public Integer getEstado() {
-        return estado;
+    public Integer getIdtipoarbol() {
+        return idtipoarbol;
     }
 
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
-
-    public TipoArbol getIdTipoArbol() {
-        return idTipoArbol;
-    }
-
-    public void setIdTipoArbol(TipoArbol idTipoArbol) {
-        this.idTipoArbol = idTipoArbol;
+    public void setIdtipoarbol(Integer idtipoarbol) {
+        this.idtipoarbol = idtipoarbol;
     }
 
     @Override

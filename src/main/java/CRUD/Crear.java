@@ -1,10 +1,11 @@
 package CRUD;
 
 import gt.edu.umg.db.Arbol;
-import gt.edu.umg.db.TipoArbol;
-import java.util.List;
+import gt.edu.umg.db.Tipoarbol;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class Crear {
 
@@ -16,63 +17,50 @@ public class Crear {
         this.emf = emf;
     }
 
-    public void crearArbol(int dato, TipoArbol tarbol) {
+    public void crearArbol(int dato,int id) throws Exception {
+
+        Arbol arbol = new Arbol();
+
+        arbol.setDato(dato);
+        arbol.setIdtipoarbol(id);
+
         try {
             em.getTransaction().begin();
-
-            Arbol arbol = new Arbol();
-            arbol.setEstado(0);
-            arbol.setDato(dato);
-            arbol.setIdTipoArbol(tarbol);// Establecer la relación con el TipoArbol pasado como parámetro
-
             em.persist(arbol);
-
             em.getTransaction().commit();
         } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            System.out.println("Ha ocurrido una excepción: " + e.getMessage());
+            em.getTransaction().rollback();
+            System.out.println("A ocurrido una excepcion: " + e.getMessage());
+
+        } finally {
+            //em.close();
+            //emf.close();
         }
     }
-
-    public void crearTipoArbol(String tipo) {
+    
+    public  void tipoArbol(String nombre)throws Exception {
+        
+        Tipoarbol tipo = new Tipoarbol();
+        
+        tipo.setNombre(nombre);
+        tipo.setEstado(0);
         try {
             em.getTransaction().begin();
-
-            TipoArbol tarbol = new TipoArbol();
-            tarbol.setNombre(tipo);
-            tarbol.setEstado(1);
-
-            em.persist(tarbol);
-
+            em.persist(tipo);
             em.getTransaction().commit();
         } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            System.out.println("Ha ocurrido una excepción: " + e.getMessage());
+            em.getTransaction().rollback();
+            System.out.println("A ocurrido una excepcion: " + e.getMessage());
+
+        } finally {
+            //em.close();
+            //emf.close();
         }
+        
     }
-
-    public void crearTipoArbol(List<Integer> listaEnteros) {
-        try {
-            em.getTransaction().begin();
-
-            for (Integer dato : listaEnteros) {
-                TipoArbol tarbol = new TipoArbol();
-                tarbol.setNombre("Tipo" + dato); // Puedes asignar nombres distintos basados en los datos de la lista si es necesario
-                tarbol.setEstado(1);
-
-                em.persist(tarbol);
-            }
-
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            System.out.println("Ha ocurrido una excepción: " + e.getMessage());
-        }
-    }
+    
+ 
 }
+    
+    
+

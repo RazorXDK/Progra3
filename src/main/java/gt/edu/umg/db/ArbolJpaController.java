@@ -34,16 +34,7 @@ public class ArbolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            TipoArbol idTipoArbol = arbol.getIdTipoArbol();
-            if (idTipoArbol != null) {
-                idTipoArbol = em.getReference(idTipoArbol.getClass(), idTipoArbol.getIdTipoArbol());
-                arbol.setIdTipoArbol(idTipoArbol);
-            }
             em.persist(arbol);
-            if (idTipoArbol != null) {
-                idTipoArbol.getArbolList().add(arbol);
-                idTipoArbol = em.merge(idTipoArbol);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -57,22 +48,7 @@ public class ArbolJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Arbol persistentArbol = em.find(Arbol.class, arbol.getId());
-            TipoArbol idTipoArbolOld = persistentArbol.getIdTipoArbol();
-            TipoArbol idTipoArbolNew = arbol.getIdTipoArbol();
-            if (idTipoArbolNew != null) {
-                idTipoArbolNew = em.getReference(idTipoArbolNew.getClass(), idTipoArbolNew.getIdTipoArbol());
-                arbol.setIdTipoArbol(idTipoArbolNew);
-            }
             arbol = em.merge(arbol);
-            if (idTipoArbolOld != null && !idTipoArbolOld.equals(idTipoArbolNew)) {
-                idTipoArbolOld.getArbolList().remove(arbol);
-                idTipoArbolOld = em.merge(idTipoArbolOld);
-            }
-            if (idTipoArbolNew != null && !idTipoArbolNew.equals(idTipoArbolOld)) {
-                idTipoArbolNew.getArbolList().add(arbol);
-                idTipoArbolNew = em.merge(idTipoArbolNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -101,11 +77,6 @@ public class ArbolJpaController implements Serializable {
                 arbol.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The arbol with id " + id + " no longer exists.", enfe);
-            }
-            TipoArbol idTipoArbol = arbol.getIdTipoArbol();
-            if (idTipoArbol != null) {
-                idTipoArbol.getArbolList().remove(arbol);
-                idTipoArbol = em.merge(idTipoArbol);
             }
             em.remove(arbol);
             em.getTransaction().commit();

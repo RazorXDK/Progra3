@@ -52,7 +52,7 @@ public class Eliminar {
 
             if (!arboles.isEmpty()) {
                 for (Arbol arbol : arboles) {
-                    arbol.setEstado(0);
+                   
                     em.merge(arbol);
                 }
             } else {

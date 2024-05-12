@@ -27,7 +27,7 @@ public class Actualizar {
 
     public void ActualizarArbol(int id, int estado, int dato) throws Exception {
         Arbol arbol = em.find(Arbol.class, id);
-        arbol.setEstado(estado);
+      
         arbol.setDato(dato);
 
         try {
@@ -54,7 +54,7 @@ public class Actualizar {
 
             if (!arboles.isEmpty()) {
                 for (Arbol arbol : arboles) {
-                    arbol.setEstado(1);
+                    
                     em.merge(arbol);
                 }
             } else {

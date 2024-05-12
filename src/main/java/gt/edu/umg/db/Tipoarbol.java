@@ -5,7 +5,6 @@
 package gt.edu.umg.db;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,15 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author LENOVO
+ * @author rober
  */
 @Entity
-@Table(name = "tipoarbol", catalog = "postgres", schema = "POSTGRES")
+@Table(name = "tipoarbol", catalog = "postgres", schema = "public")
 @NamedQueries({
     @NamedQuery(name = "Tipoarbol.findAll", query = "SELECT t FROM Tipoarbol t")})
 public class Tipoarbol implements Serializable {
@@ -31,28 +29,26 @@ public class Tipoarbol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idtipoarbol", nullable = false)
-    private Integer idtipoarbol;
-    @Column(name = "nombre", length = 50)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+    @Column(name = "nombre", length = 2147483647)
     private String nombre;
     @Column(name = "estado")
     private Integer estado;
-    @OneToMany(mappedBy = "idtipoarbol")
-    private List<Arbol> arbolList;
 
     public Tipoarbol() {
     }
 
-    public Tipoarbol(Integer idtipoarbol) {
-        this.idtipoarbol = idtipoarbol;
+    public Tipoarbol(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdtipoarbol() {
-        return idtipoarbol;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdtipoarbol(Integer idtipoarbol) {
-        this.idtipoarbol = idtipoarbol;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -71,18 +67,10 @@ public class Tipoarbol implements Serializable {
         this.estado = estado;
     }
 
-    public List<Arbol> getArbolList() {
-        return arbolList;
-    }
-
-    public void setArbolList(List<Arbol> arbolList) {
-        this.arbolList = arbolList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idtipoarbol != null ? idtipoarbol.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -93,7 +81,7 @@ public class Tipoarbol implements Serializable {
             return false;
         }
         Tipoarbol other = (Tipoarbol) object;
-        if ((this.idtipoarbol == null && other.idtipoarbol != null) || (this.idtipoarbol != null && !this.idtipoarbol.equals(other.idtipoarbol))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -101,7 +89,7 @@ public class Tipoarbol implements Serializable {
 
     @Override
     public String toString() {
-        return "gt.edu.umg.db.Tipoarbol[ idtipoarbol=" + idtipoarbol + " ]";
+        return "gt.edu.umg.db.Tipoarbol[ id=" + id + " ]";
     }
     
 }
