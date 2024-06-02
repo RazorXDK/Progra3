@@ -194,7 +194,7 @@ public class ventanaMenu extends javax.swing.JFrame {
         });
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel10.setText("Opcion3 YY");
+        jLabel10.setText("Administracion de Memoria");
 
         Ico3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/terminal.png"))); // NOI18N
         Ico3.setToolTipText("");
@@ -207,7 +207,7 @@ public class ventanaMenu extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(Ico3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         buton3Layout.setVerticalGroup(
